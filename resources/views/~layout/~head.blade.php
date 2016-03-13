@@ -6,16 +6,22 @@
     <title>Angle - Bootstrap Admin Template</title>
     <!-- =============== VENDOR STYLES ===============-->
     <!-- FONT AWESOME-->
-    <link rel="stylesheet" href="../vendor/fontawesome/css/font-awesome.min.css">
+    {!! Html::style('angel/vendor/fontawesome/css/font-awesome.min.css'!!}
     <!-- SIMPLE LINE ICONS-->
-    <link rel="stylesheet" href="../vendor/simple-line-icons/css/simple-line-icons.css">
+    {!! Html::style('angel/vendor/simple-line-icons/css/simple-line-icons.css'!!}
     <!-- ANIMATE.CSS-->
-    <link rel="stylesheet" href="../vendor/animate.css/animate.min.css">
+    {!! Html::style('angel/vendor/animate.css/animate.min.css'!!}
     <!-- WHIRL (spinners)-->
-    <link rel="stylesheet" href="../vendor/whirl/dist/whirl.css">
+    {!! Html::style('angel/vendor/whirl/dist/whirl.css'!!}
     <!-- =============== PAGE VENDOR STYLES ===============-->
     <!-- =============== BOOTSTRAP STYLES ===============-->
-    <link rel="stylesheet" href="css/bootstrap.css" id="bscss">
+    {!! Html::style('css/bootstrap.css')!!}
     <!-- =============== APP STYLES ===============-->
-    <link rel="stylesheet" href="css/app.css" id="maincss">
+    {!! Html::style('css/app.css')!!}
+    @yield('my-styles')
+
+    {!! Html::style( 'site/css/style.css' ) !!}
+    {!! Html::style( 'site/css/modal.comptech.css' ) !!}
+    {!! Html::style( 'site/themes/css/flat-blue.css' ) !!}
+    {!! Html::style( 'site/css/galonline.css' ) !!}
 </head>

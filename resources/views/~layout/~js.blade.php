@@ -1,25 +1,44 @@
 <!-- MODERNIZR-->
-<script src="../vendor/modernizr/modernizr.custom.js"></script>
+{!! HTML::script('angel/vendor/modernizr/modernizr.custom.js') !!}
 <!-- MATCHMEDIA POLYFILL-->
-<script src="../vendor/matchMedia/matchMedia.js"></script>
+{!! HTML::script('angel/vendor/matchMedia/matchMedia.js') !!}
 <!-- JQUERY-->
-<script src="../vendor/jquery/dist/jquery.js"></script>
+{!! HTML::script('angel/vendor/jquery/dist/jquery.js') !!}
 <!-- BOOTSTRAP-->
-<script src="../vendor/bootstrap/dist/js/bootstrap.js"></script>
+{!! HTML::script('angel/vendor/bootstrap/dist/js/bootstrap.js') !!}
 <!-- STORAGE API-->
-<script src="../vendor/jQuery-Storage-API/jquery.storageapi.js"></script>
+{!! HTML::script('angel/vendor/jQuery-Storage-API/jquery.storageapi.js') !!}
 <!-- JQUERY EASING-->
-<script src="../vendor/jquery.easing/js/jquery.easing.js"></script>
+{!! HTML::script('angel/vendor/jquery.easing/js/jquery.easing.js') !!}
 <!-- ANIMO-->
-<script src="../vendor/animo.js/animo.js"></script>
+{!! HTML::script('angel/vendor/animo.js/animo.js') !!}
 <!-- SLIMSCROLL-->
-<script src="../vendor/slimScroll/jquery.slimscroll.min.js"></script>
+{!! HTML::script('angel/vendor/slimScroll/jquery.slimscroll.min.js') !!}
 <!-- SCREENFULL-->
-<script src="../vendor/screenfull/dist/screenfull.js"></script>
+{!! HTML::script('angel/vendor/screenfull/dist/screenfull.js') !!}
 <!-- LOCALIZE-->
-<script src="../vendor/jquery-localize-i18n/dist/jquery.localize.js"></script>
+{!! HTML::script('angel/vendor/jquery-localize-i18n/dist/jquery.localize.js') !!}
 <!-- RTL demo-->
-<script src="js/demo/demo-rtl.js"></script>
-<!-- =============== PAGE VENDOR SCRIPTS ===============-->
-<!-- =============== APP SCRIPTS ===============-->
-<script src="js/app.js"></script>
+{!! HTML::script('angel/js/demo/demo-rtl.js') !!}
+{!! HTML::script('angel/js/app.js') !!}
+
+
+{!! Html::script('vendor/select2/js/select2.full.min.js') !!}
+{!! Html::script('vendor/select2/js/i18n/ro.js') !!}
+
+{!! Html::script('vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') !!}
+{!! Html::script('vendor/bootstrap-datepicker/locales/bootstrap-datepicker.ro.min.js') !!}
+
+{!! Html::script('vendor/numeral/numeral.min.js') !!}
+{!! Html::script('vendor/numeral/ro.js') !!}
+{!! Html::script('vendor/moment/moment.min.js') !!}
+
+{!! Html::script('vendor/file-input/js/fileinput.min.js') !!}
+{!! Html::script('vendor/file-input/js/fileinput_locale_ro.js') !!}
+
+{!! Html::script('comptech/helper/ajax.js') !!}
+{!! Html::script('comptech/ui/modal.js') !!}
+{!! Html::script('comptech/actions/actions.js') !!}
+{!! Html::script('comptech/actions/filter.js') !!}
+
+@yield('custom-javascript-files')
