@@ -18,3 +18,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
 Route::group(['namespace' => 'Files'], function(){
    Route::get('file-structure','FileStructureController@index')->name('file_structure.index');
 });
+foreach(Config::get('routes.files') as $i => $file)
+{
+    require( str_replace('\\', '/', app_path()) . '/Http/Routes/' . $file) ;
+}

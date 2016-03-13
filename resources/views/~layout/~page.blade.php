@@ -2,13 +2,12 @@
 <section>
     <!-- Page content-->
     <div class="content-wrapper">
-        <h3>Page title
-            <small>Subtitle</small>
+        @if($page)
+        @yield('helper-title')
+        <h3>{!! $page['title'] !!}
+            <small>{!! $page['small'] !!}</small>
         </h3>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>A row with content</p>
-            </div>
-        </div>
+        @endif
+       @yield('content')
     </div>
 </section>

@@ -41,4 +41,5 @@
 {!! Html::script('comptech/actions/actions.js') !!}
 {!! Html::script('comptech/actions/filter.js') !!}
 
+@yield('js')
 @yield('custom-javascript-files')
