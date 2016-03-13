@@ -11,6 +11,7 @@
             </a>
         </div>
         <div class="nav-wrapper">
+
             <ul class="nav navbar-nav">
                 @if(!Auth::guest())
                 <li>
@@ -28,6 +29,11 @@
                     </a>
                 </li>
                 @endif
+                    <ul class="nav navbar-nav navbar-right" role="menu">
+                        @foreach (array_keys(config('locale.languages')) as $lang)
+                            <li>{!! link_to('lang/'.$lang, trans('menus.language-picker.langs.'.$lang)) !!}</li>
+                        @endforeach
+                    </ul>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>

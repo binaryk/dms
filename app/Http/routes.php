@@ -16,9 +16,13 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
 });
 
 
+
+
 Route::group(['middleware' => 'web'], function() {
     foreach(Config::get('routes.files') as $i => $file)
     {
         require( str_replace('\\', '/', app_path()) . '/Http/Routes/' . $file) ;
     }
+
+
 });
