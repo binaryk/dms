@@ -5,40 +5,28 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="_token" content="{{ csrf_token() }}" />
-
-        <title>@yield('title', app_name())</title>
-
-        <!-- Meta -->
-        <meta name="description" content="@yield('meta_description', 'Default Description')">
-        <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
+        <title>Document management system - auth</title>
+        <meta name="description" content="@yield('meta_description', 'DMS')">
+        <meta name="author" content="@yield('meta_author', 'binaryk')">
         @yield('meta')
-
-        <!-- Styles -->
         @yield('before-styles-end')
-        {!! Html::style(elixir('css/frontend.css')) !!}
-        @yield('after-styles-end')
-
-        <!-- Fonts -->
+        <link rel="stylesheet" href="{!! asset('angel/vendor/fontawesome/css/font-awesome.min.css')!!}">
+        <link rel="stylesheet" href="{!! asset('angel/vendor/simple-line-icons/css/simple-line-icons.css')!!}">
+        <link rel="stylesheet" href="{!! asset('angel/css/bootstrap.css')!!}" id="bscss">
+        <link rel="stylesheet" href="css/app.css" id="maincss">
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+        @yield('after-styles-end')
     </head>
     <body id="app-layout">
-
-        @include('frontend.includes.nav')
-
-        <div class="container">
+        <div class="container" style="margin-top: 30vh;">
             @include('includes.partials.messages')
             @yield('content')
-        </div><!-- container -->
-
-        <!-- JavaScripts -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
-        {!! Html::script('js/vendor/bootstrap/bootstrap.min.js') !!}
-
-        @yield('before-scripts-end')
-        {!! Html::script(elixir('js/frontend.js')) !!}
-        @yield('after-scripts-end')
-
-        @include('includes.partials.ga')
+        </div>
+        <script src="{!! asset('angel/vendor/modernizr/modernizr.js') !!}"></script>
+        <script src="{!! asset('angel/vendor/jquery/dist/jquery.js') !!}"></script>
+        <script src="{!! asset('angel/vendor/bootstrap/dist/js/bootstrap.js')!!}"></script>
+        <script src="{!! asset('angel/vendor/jQuery-Storage-API/jquery.storageapi.js') !!}"></script>
+        <script src="{!! asset('angel/vendor/parsleyjs/dist/parsley.min.js')!!}"></script>
+        <script src="{!! asset('js/app.js')!!}"></script>
     </body>
 </html>

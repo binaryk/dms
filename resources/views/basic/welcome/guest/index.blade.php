@@ -1,16 +1,6 @@
 @section('helper-title')
 	@parent
-	<div class="pull-right">
-		<div class="btn-group">
-			<button type="button" data-toggle="dropdown" class="btn btn-default">English</button>
-			<ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
-				<li><a href="#" data-set-lang="en">English</a>
-				</li>
-				<li><a href="#" data-set-lang="es">Spanish</a>
-				</li>
-			</ul>
-		</div>
-	</div>
+	@include('basic.welcome.guest.login-message')
 @stop
 <div class="row">
 	<div class="col-lg-3 col-sm-6">

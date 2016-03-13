@@ -15,10 +15,10 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
     require (__DIR__ . '/Routes/Backend/LogViewer.php');
 });
 
-Route::group(['namespace' => 'Files'], function(){
-   Route::get('file-structure','FileStructureController@index')->name('file_structure.index');
+
+Route::group(['middleware' => 'web'], function() {
+    foreach(Config::get('routes.files') as $i => $file)
+    {
+        require( str_replace('\\', '/', app_path()) . '/Http/Routes/' . $file) ;
+    }
 });
-foreach(Config::get('routes.files') as $i => $file)
-{
-    require( str_replace('\\', '/', app_path()) . '/Http/Routes/' . $file) ;
-}

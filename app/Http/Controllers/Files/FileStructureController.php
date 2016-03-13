@@ -11,15 +11,9 @@ class FileStructureController extends BaseController
 {
     public function index()
     {
-        /*$root = FileStructure::find(2);
-        $B = FileStructure::create(['name' => 'B', 'type' => 'folder']);
-        $B->makeChildOf($root);
-        dd($root->descendants());
-        return $root;*/
-
         $this->makeNavigation();
         return view('file-structure.index')
-               ->with( $this->data() );
+               ->with( $this->data('Strucura de fisiere', 'aici gasiti fisierele dvs') );
     }
 
 }

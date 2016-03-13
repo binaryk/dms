@@ -34,7 +34,7 @@ class BaseController extends \App\Http\Controllers\Controller
         new \App\Repositories\Galonline\Navigation\Main($this->side_menu, $this->current_user);
     }
 
-    protected function data($title = '')
+    protected function data($title = '', $small = '')
     {
     	return [
     		'breadcrumb'    => $this->getBreadcrumbs(),
@@ -44,7 +44,7 @@ class BaseController extends \App\Http\Controllers\Controller
             'navigation'    => $this->side_menu,
             'page' => [
                 'title' => $title,
-                'small' => '',
+                'small' => $small,
             ],
     	];
     }

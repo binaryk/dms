@@ -1,6 +1,5 @@
 <?php
-
-Route::get('/', [
-    'as'   => 'welcome-index',
-    'uses' => 'Basic\WelcomeController@index'
-]);
+    Route::get('/', [
+        'as'   => 'frontend.index',
+        'uses' => 'Basic\WelcomeController@index'
+    ]);

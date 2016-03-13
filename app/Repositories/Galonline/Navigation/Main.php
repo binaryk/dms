@@ -18,41 +18,42 @@ class Main
 				->show(true)
 		);
 
-    	$this->menu->addDropdown('nomenclatoare-dropdown',
-	        \App\Repositories\Ui\Navigation\Dropdown::make()
-	        ->id('nomenclatoare-dropdown')
-	        ->icon('icon fa fa-book')
-	        ->active(\Request::is('admin/type-docs*') ? 'active' : '')
-	        ->caption( trans('sidebar.nomenclator') )
-            ->count('1')
-            /*Tipuri de documente acceptate*/
-	        ->addOption('tipuri-documente-dropdown',
-	            \App\Repositories\Ui\Navigation\Option::make()
-	            ->class('')
-	            ->url(\URL::to('/') )
-	            ->icon('')
-	            ->caption( trans('sidebar.doc_type') )
-	            ->show(true)
-	        )
-	    );
-
     	$this->menu->addDropdown('file-structure',
 	        \App\Repositories\Ui\Navigation\Dropdown::make()
 	        ->id('file-structure')
 	        ->icon('icon fa fa-folder')
-	        ->active(\Request::is('admin-gal*') ? 'active' : '')
+	        ->active(\Request::is('file-structure*') ? 'active' : '')
 	        ->caption( trans('sidebar.file_struct') )
             ->count('1')
             /*Structura de documente/foldere*/
 	        ->addOption('structura_individuala',
 	            \App\Repositories\Ui\Navigation\Option::make()
-	            ->class('')
+	            ->class(\Request::is('file-structure') ? 'active' : '')
 	            ->url(\URL::route('file_structure.index') )
 	            ->icon('')
 	            ->caption( trans('sidebar.doc_type') )
 	            ->show(true)
 	        )
 	    );
+
+
+        $this->menu->addDropdown('nomenclatoare-dropdown',
+            \App\Repositories\Ui\Navigation\Dropdown::make()
+                ->id('nomenclatoare-dropdown')
+                ->icon('icon fa fa-book')
+                ->active(\Request::is('admin/type-docs*') ? 'active' : '')
+                ->caption( trans('sidebar.nomenclator') )
+                ->count('1')
+                /*Tipuri de documente acceptate*/
+                ->addOption('tipuri-documente-dropdown',
+                    \App\Repositories\Ui\Navigation\Option::make()
+                        ->class('')
+                        ->url(\URL::to('/') )
+                        ->icon('')
+                        ->caption( trans('sidebar.doc_type') )
+                        ->show(true)
+                )
+        );
     }
 
 	public function __construct( \App\Repositories\Ui\Navigation\Sidemenu $menu, \App\Models\Access\User\User $user = NULL)

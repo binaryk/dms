@@ -15,6 +15,9 @@ class FrontendController extends Controller
      */
     public function index()
     {
+
+        dd(access()->user());
+
         javascript()->put([
             'test' => 'it works!',
         ]);
