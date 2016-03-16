@@ -23,6 +23,7 @@ class FileStructureController extends BaseController
 
     public function get()
     {
+
         return response()->json([
             'files' => $files = $this->userFiles(),
         ]);
@@ -41,8 +42,6 @@ class FileStructureController extends BaseController
 
     public function userFiles()
     {
-//        dd(access()->user()->files());
-
         return access()->user()->files();
     }
 

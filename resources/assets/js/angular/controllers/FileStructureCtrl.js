@@ -52,7 +52,7 @@ var FileStructureCtrl = function($scope, FileStructureService,$uibModal){
                 type: 'director'
             }
         };
-        
+
         FileStructureService.store(form).then(data => {
             if(data.code === 200){
                 console.log(data.inserted);
@@ -81,7 +81,17 @@ var FileStructureCtrl = function($scope, FileStructureService,$uibModal){
             }],
             null,
             ['Sterge', $itemScope => {
-                that.files.splice($itemScope.$index, 1);
+                console.log($itemScope);
+                console.log($itemScope.$parent['file'] === undefined);
+                if($itemScope.$parent['file'] === undefined){
+                    delete that.files[$itemScope.file.id];
+                }else{
+                    const parentChildrens = $itemScope.$parent.file.children;
+                     const index  = parentChildrens.indexOf($itemScope.file);
+                     parentChildrens.splice(index, 1);
+                     console.log($itemScope.$parent.file.children.indexOf($itemScope.file));
+                }
+
             }]
         ];
     }

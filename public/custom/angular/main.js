@@ -167,7 +167,16 @@
 	        }], null, ['Adauga fisiere', function ($itemScope) {
 	            $scope.items.splice($itemScope.$index, 1);
 	        }], null, ['Sterge', function ($itemScope) {
-	            that.files.splice($itemScope.$index, 1);
+	            console.log($itemScope);
+	            console.log($itemScope.$parent['file'] === undefined);
+	            if ($itemScope.$parent['file'] === undefined) {
+	                delete that.files[$itemScope.file.id];
+	            } else {
+	                var parentChildrens = $itemScope.$parent.file.children;
+	                var index = parentChildrens.indexOf($itemScope.file);
+	                parentChildrens.splice(index, 1);
+	                console.log($itemScope.$parent.file.children.indexOf($itemScope.file));
+	            }
 	        }]];
 	    };
 	
