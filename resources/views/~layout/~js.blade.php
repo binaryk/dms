@@ -41,5 +41,20 @@
 {!! Html::script('comptech/actions/actions.js') !!}
 {!! Html::script('comptech/actions/filter.js') !!}
 
+
+
+{!! Html::script('custom/angular/main.js') !!}
+<script>
+    var token = $('meta[name="csrf_token"]').attr('content');
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': token,
+            'X-XSRF-TOKEN': token
+        },
+        '_token' : token,
+        async    : false
+    });
+    var _config = {};
+</script>
 @yield('js')
 @yield('custom-javascript-files')

@@ -1,4 +1,15 @@
 @extends('~layout.~template')
 @section('content')
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, deleniti eaque earum, facere iure magnam nemo nobis qui repellat sapiente tempora vero. Accusantium, blanditiis ea harum ipsam nisi porro voluptates.
+    <div ng-controller="FileStructureCtrl as fs" ng-cloak>
+        @if(count($files) === 0)
+            @include('file-structure.parts.no_files')
+        @else
+            @include('file-structure.parts.files')
+        @endif
+        @include('file-structure.parts.dir_name')
+
+        @include('file-structure.parts.modal')
+    </div>
 @stop
+
+@include('file-structure.parts.routes')

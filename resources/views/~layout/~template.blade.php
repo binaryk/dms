@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="dms">
 @include('~layout.~head')
 <body>
-<div class="wrapper">
+<div class="wrapper" ng-cloak ng-controller="MainCtrl">
     @include('~layout.~top')
     @if(!Auth::guest())
         @include('~layout.~sidebar')

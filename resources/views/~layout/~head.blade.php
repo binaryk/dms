@@ -4,6 +4,7 @@
     <meta name="description" content="Bootstrap Admin App + jQuery">
     <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
     <title>Document management system</title>
+    <meta name="csrf_token" content="{!! csrf_token() !!}"/>
     <!-- =============== VENDOR STYLES ===============-->
     <!-- FONT AWESOME-->
     {!! Html::style('angel/vendor/fontawesome/css/font-awesome.min.css')!!}
@@ -24,4 +25,10 @@
     {!! Html::style( 'site/css/modal.comptech.css' ) !!}
     {!! Html::style( 'site/themes/css/flat-blue.css' ) !!}
     {!! Html::style( 'site/css/galonline.css' ) !!}
+
+    <style>
+        .ng-cloak{
+            display: none !important;
+        }
+    </style>
 </head>

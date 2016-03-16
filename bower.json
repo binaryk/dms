@@ -1,0 +1,22 @@
+{
+  "name": "dms",
+  "description": "document management system",
+  "main": "",
+  "authors": [
+    "binaryk <lupacescueduard@yahoo.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/binaryk/dms",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "systemjs": "*",
+    "requirejs": "~2.1.22"
+  }
+}

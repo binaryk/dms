@@ -35,4 +35,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    public function files()
+    {
+        return $this->hasMany(\App\Models\FileStructure::class, 'user_id')->get();
+    }
+
 }
