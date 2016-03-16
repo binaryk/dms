@@ -1,7 +1,5 @@
 <ul>
-    <li ng-repeat="file in fs.files" context-menu="fs.menuOptions">
-        Name: [[ file.name ]]
-        Path: [[ file.path ]]
-        button.btn.btn-xs.btn-success
+    <li nested-item ng-repeat="file in fs.files" context-menu="fs.menuOptions">
+        [[ file.name ]]
     </li>
 </ul>

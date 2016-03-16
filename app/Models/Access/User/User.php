@@ -3,6 +3,7 @@
 namespace App\Models\Access\User;
 
 use App\Models\Access\User\Traits\UserAccess;
+use App\Models\FileStructure;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Access\User\Traits\Attribute\UserAttribute;
@@ -38,7 +39,12 @@ class User extends Authenticatable
 
     public function files()
     {
-        return $this->hasMany(\App\Models\FileStructure::class, 'user_id')->get();
+        $node = FileStructure::roots()->where('user_id', '=', access()->user()->id)->first();
+        if($node){
+            return $node->getDescendants()->toHierarchy();
+        }else{
+            return [];
+        }
     }
 
 }

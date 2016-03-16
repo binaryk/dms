@@ -14,26 +14,26 @@
 
             <ul class="nav navbar-nav">
                 @if(!Auth::guest())
-                <li>
+                    <li>
                         <a href="#" data-toggle-state="aside-collapsed" class="hidden-xs">
                             <em class="fa fa-navicon"></em>
                         </a>
-                    <a href="#" data-toggle-state="aside-toggled" data-no-persist="true" class="visible-xs sidebar-toggle">
-                        <em class="fa fa-navicon"></em>
-                    </a>
+                        <a href="#" data-toggle-state="aside-toggled" data-no-persist="true" class="visible-xs sidebar-toggle">
+                            <em class="fa fa-navicon"></em>
+                        </a>
 
-                </li>
-                <li>
-                    <a href="{!! route('frontend.user.dashboard') !!}" >
-                        <em class="icon-user"></em>
-                    </a>
-                </li>
+                    </li>
+                    <li>
+                        <a href="{!! route('frontend.user.dashboard') !!}" >
+                            <em class="icon-user"></em>
+                        </a>
+                    </li>
                 @endif
-                    <ul class="nav navbar-nav navbar-right" role="menu">
-                        @foreach (array_keys(config('locale.languages')) as $lang)
-                            <li>{!! link_to('lang/'.$lang, trans('menus.language-picker.langs.'.$lang)) !!}</li>
-                        @endforeach
-                    </ul>
+                <ul class="nav navbar-nav navbar-right" role="menu">
+                    @foreach (array_keys(config('locale.languages')) as $lang)
+                        <li>{!! link_to('lang/'.$lang, trans('menus.language-picker.langs.'.$lang)) !!}</li>
+                    @endforeach
+                </ul>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
@@ -46,7 +46,7 @@
                         <em class="fa fa-expand"></em>
                     </a>
                 </li>
-               @include('~layout.~notifications')
+                @include('~layout.~notifications')
                 @if(!Auth::guest())
                     <li>
                         <a href="{!! route('auth.logout') !!}" title="{!! trans('navs.general.logout') !!}" data-toggle-state="offsidebar-open" data-no-persist="true">

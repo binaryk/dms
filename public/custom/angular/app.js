@@ -52,49 +52,57 @@ var FileStructureCtrl = function FileStructureCtrl($scope, FileStructureService,
 
     that.get = function () {
         FileStructureService.get().then(function (data) {
-            return that.files = data.files;
+            that.files = data.files;console.log(data);
         });
     };
 
-    that.test = function () {
-        alert('asas');
-    };
-
-    that.open = function (size) {
+    that.open = function (_current_dir) {
         var modalInstance = $uibModal.open({
             animation: that.animationsEnabled,
-            templateUrl: 'myModalContent.html',
-            //controller: 'ModalInstanceCtrl',
-            size: size,
+            templateUrl: 'addDirector.html',
+            controller: 'ModalDirectorCtrl',
             resolve: {
-                items: function items() {
-                    return that.files;
+                fss: function fss() {
+                    return FileStructureService;
+                },
+                current_dir: function current_dir() {
+                    return _current_dir;
                 }
             }
         });
-        modalInstance.result.then(function (selectedItem) {
-            //$scope.selected = selectedItem;
-            console.log('modall');
+        modalInstance.result.then(function (dirName) {
+            that.storeChildDirectory(_current_dir, dirName);
         }, function () {
             console.log('MoDADSAD');
         });
-    };
-
-    that.ok = function () {
-        console.log('asdas');
-
-        $uibModalInstance.close('xxx');
-    };
-
-    that.cancel = function () {
-        $uibModalInstance.dismiss('cancel');
     };
 
     that.storeDirectory = function () {
         that.form.type = 'director';
         FileStructureService.store(that.form).then(function (data) {
             if (data.code === 200) {
+                console.log(data);
                 that.addDir = false;
+                that.files[data.inserted.id] = data.inserted;
+                console.log(that.files);
+            } else {
+                alert('Erorr');
+            }
+        });
+    };
+
+    that.storeChildDirectory = function (parent, dirName) {
+        var form = {
+            parent: parent,
+            current: {
+                name: dirName,
+                type: 'director'
+            }
+        };
+
+        FileStructureService.store(form).then(function (data) {
+            if (data.code === 200) {
+                console.log(data.inserted);
             } else {
                 alert('Erorr');
             }
@@ -109,7 +117,7 @@ var FileStructureCtrl = function FileStructureCtrl($scope, FileStructureService,
         that.files = [];
         that.animationsEnabled = true;
         that.menuOptions = [['Creeaza subdirector', function ($itemScope) {
-            $scope.selected = $itemScope.item.name;
+            that.open($itemScope.file);
         }], null, ['Adauga fisiere', function ($itemScope) {
             $scope.items.splice($itemScope.$index, 1);
         }], null, ['Sterge', function ($itemScope) {
@@ -124,21 +132,30 @@ var FileStructureCtrl = function FileStructureCtrl($scope, FileStructureService,
 
 FileStructureCtrl.$inject = ['$scope', 'FileStructureService', '$uibModal'];
 controllers.controller('FileStructureCtrl', FileStructureCtrl);
-controllers.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
 
-    $scope.items = items;
-    $scope.selected = {
-        item: $scope.items[0]
-    };
-
-    $scope.ok = function () {
-        $uibModalInstance.close($scope.selected.item);
+controllers.controller('ModalDirectorCtrl', function ($scope, $uibModalInstance, fss, current_dir) {
+    $scope.name = '';
+    $scope.store = function () {
+        $uibModalInstance.close($scope.name);
     };
 
     $scope.cancel = function () {
-        $uibModalInstance.dismiss('cancel');
+        console.log('cancel');
+        $uibModalInstance.close(null);
     };
 });
+
+controllers.directive('nestedItem', ['$compile', function ($compile) {
+    return {
+        restrict: 'A',
+        link: function link(scope, element) {
+            if (scope.file.children) {
+                var html = $compile('<ul><li nested-item ng-repeat="file in file.children" context-menu="fs.menuOptions">[[file.name]]</li></ul>')(scope);
+                element.append(html);
+            }
+        }
+    };
+}]);
 
 'use strict';
 

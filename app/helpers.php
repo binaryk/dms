@@ -65,12 +65,12 @@ if (! function_exists('success')) {
      *
      * @return \Illuminate\Foundation\Application|mixed
      */
-    function success($msg = 'Success')
+    function success($data = null, $msg = 'Success')
     {
         return response()->json([
             'code' => 200,
             'msg' => $msg
-        ]);;
+        ] + $data);;
     }
 }
 
