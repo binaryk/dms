@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "systemjs": "*",
-    "requirejs": "~2.1.22"
+    "requirejs": "~2.1.22",
+    "angular-ui-tree": "~2.15.0"
   }
 }

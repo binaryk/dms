@@ -17,46 +17,56 @@ var _angularUiBootstrap = require("angular-ui-bootstrap");
 
 var _angularUiBootstrap2 = _interopRequireDefault(_angularUiBootstrap);
 
+var _angularUiTree = require("angular-ui-tree");
+
+var _angularUiTree2 = _interopRequireDefault(_angularUiTree);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-console.log('config');
-
-
-var dms = _angular2.default.module('dms', ['dms.controllers', 'dms.directives', 'dms.services', 'ui.bootstrap.contextMenu', 'ui.bootstrap']).config(function ($interpolateProvider) {
+var dms = _angular2.default.module('dms', ['dms.controllers', 'dms.directives', 'dms.services', 'ui.bootstrap.contextMenu', 'ui.bootstrap', 'ui.tree']).constant('treeConfig', {
+    treeClass: 'angular-ui-tree',
+    emptyTreeClass: 'angular-ui-tree-empty',
+    hiddenClass: 'angular-ui-tree-hidden',
+    nodesClass: 'angular-ui-tree-nodes',
+    nodeClass: 'angular-ui-tree-node',
+    handleClass: 'angular-ui-tree-handle',
+    placeholderClass: 'angular-ui-tree-placeholder',
+    dragClass: 'angular-ui-tree-drag',
+    dragThreshold: 3,
+    levelThreshold: 30,
+    defaultCollapsed: false
+}).config(function ($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 }).run(function ($rootScope) {
     $rootScope.config = _config;
 });
 'use strict';
-console.log('controllers');
-
 var controllers = exports.controllers = _angular2.default.module('dms.controllers', []);
 'use strict';
-console.log('MainCtrl');
-
-function MainCtrl($scope) {
-    console.log('MainCtrl inside');
-}
+function MainCtrl($scope) {}
 
 MainCtrl.$inject = ['$scope'];
 controllers.controller('MainCtrl', MainCtrl);
 'use strict';
-console.log('File str');
-
-var FileStructureCtrl = function FileStructureCtrl($scope, FileStructureService, $uibModal) {
+var FileStructureCtrl = function FileStructureCtrl($scope, FileStructureService, $uibModal, $compile) {
     var that = this;
+    that.selectedDirScope = null;
     that.addDirectory = function () {
         that.addDir = !that.addDir;
     };
 
     that.get = function () {
         FileStructureService.get().then(function (data) {
-            that.files = data.files;console.log(data);
+            that.files = $.map(data.files, function (value) {
+                return [value];
+            });
+            console.log(that.files);
         });
     };
 
-    that.open = function (_current_dir) {
+    that.open = function (scope) {
+        var _current_dir = scope.$modelValue;
         var modalInstance = $uibModal.open({
             animation: that.animationsEnabled,
             templateUrl: 'addDirector.html',
@@ -83,15 +93,18 @@ var FileStructureCtrl = function FileStructureCtrl($scope, FileStructureService,
             if (data.code === 200) {
                 console.log(data);
                 that.addDir = false;
-                that.files[data.inserted.id] = data.inserted;
+                that.files.push(data.inserted);
+                that.form = {};
                 console.log(that.files);
             } else {
-                alert('Erorr');
+                alert('Erorr: ' + data.msg);
             }
         });
     };
 
     that.storeChildDirectory = function (parent, dirName) {
+        console.log('parent', parent);
+
         var form = {
             parent: parent,
             current: {
@@ -103,43 +116,70 @@ var FileStructureCtrl = function FileStructureCtrl($scope, FileStructureService,
         FileStructureService.store(form).then(function (data) {
             if (data.code === 200) {
                 console.log(data.inserted);
+                if (parent.children) {
+                    parent.children.push(data.inserted);
+                } else {
+                    parent.children = [data.inserted];
+                }
             } else {
+                alert('Erorr: ' + data.msg);
+            }
+        });
+    };
+
+    that.removeDir = function ($itemScope) {
+        if ($itemScope.$parent['file'] === undefined) {
+            delete that.files[$itemScope.file.id];
+        } else {
+            var parentChildrens = $itemScope.$parent.file.children;
+            var index = parentChildrens.indexOf($itemScope.file);
+            parentChildrens.splice(index, 1);
+        }
+    };
+
+    that.removeItem = function (scope) {
+        scope.remove();
+        FileStructureService.remove(scope.$modelValue.id).then(function (data) {
+            if (data.code === 200) {} else {
                 alert('Erorr');
             }
         });
     };
 
-    that.draw = function () {};
+    $scope.toggle = function (scope) {
+        scope.toggle();
+    };
+
+    $scope.moveLastToTheBeginning = function () {
+        var a = $scope.data.pop();
+        $scope.data.splice(0, 0, a);
+    };
 
     that.init = function () {
         that.form = {};
         that.addDir = false;
         that.files = [];
         that.animationsEnabled = true;
-        that.menuOptions = [['Creeaza subdirector', function ($itemScope) {
+        that.menuOptions = [['Creeaza subdirector', function ($itemScope, event) {
+            that.selectedDirScope = {
+                scope: $itemScope,
+                event: event
+            };
             that.open($itemScope.file);
         }], null, ['Adauga fisiere', function ($itemScope) {
             $scope.items.splice($itemScope.$index, 1);
-        }], null, ['Sterge', function ($itemScope) {
-            console.log($itemScope);
-            console.log($itemScope.$parent['file'] === undefined);
-            if ($itemScope.$parent['file'] === undefined) {
-                delete that.files[$itemScope.file.id];
-            } else {
-                var parentChildrens = $itemScope.$parent.file.children;
-                var index = parentChildrens.indexOf($itemScope.file);
-                parentChildrens.splice(index, 1);
-                console.log($itemScope.$parent.file.children.indexOf($itemScope.file));
-            }
+        }], null, ['Sterge', function ($itemScope, event) {
+            console.log('$scope.$modelValue', $itemScope, $itemScope.$modelValue, event);
+            //$itemScope.remove();
+            //that.removeDir($itemScope);
         }]];
     };
 
     this.init();
     this.get();
-    this.draw();
 };
 
-FileStructureCtrl.$inject = ['$scope', 'FileStructureService', '$uibModal'];
+FileStructureCtrl.$inject = ['$scope', 'FileStructureService', '$uibModal', '$compile'];
 controllers.controller('FileStructureCtrl', FileStructureCtrl);
 
 controllers.controller('ModalDirectorCtrl', function ($scope, $uibModalInstance, fss, current_dir) {
@@ -174,8 +214,14 @@ services.factory('FileStructureService', ['$rootScope', '$http', function ($root
     var mixin = {};
 
     mixin.store = function (data) {
-        var rest = {};
         var promise = $http.post($rootScope.config.file_structure_store, { data: data }).then(function (response) {
+            return response.data;
+        });
+        return promise;
+    };
+
+    mixin.remove = function (data) {
+        var promise = $http.post($rootScope.config.file_structure_remove, { data: data }).then(function (response) {
             return response.data;
         });
         return promise;
@@ -231,7 +277,6 @@ services.factory('FileStructureService', ['$rootScope', '$http', function ($root
     return mixin;
 }]);
 'use strict';
-
 var directives = exports.directives = _angular2.default.module('dms.directives', []);
 
 'use strict';

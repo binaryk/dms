@@ -29,11 +29,13 @@
                         </a>
                     </li>
                 @endif
+                @if(env('APP_ENV') === 'daw')
                 <ul class="nav navbar-nav navbar-right" role="menu">
                     @foreach (array_keys(config('locale.languages')) as $lang)
                         <li>{!! link_to('lang/'.$lang, trans('menus.language-picker.langs.'.$lang)) !!}</li>
                     @endforeach
                 </ul>
+                @endif
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>

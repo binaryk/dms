@@ -24,11 +24,11 @@
     {!! Html::style( 'site/css/style.css' ) !!}
     {!! Html::style( 'site/css/modal.comptech.css' ) !!}
     {!! Html::style( 'site/themes/css/flat-blue.css' ) !!}
-    {!! Html::style( 'site/css/galonline.css' ) !!}
-
+    {!! Html::style( 'custom/css/ui.css' ) !!}
     <style>
         .ng-cloak{
             display: none !important;
         }
     </style>
+    @yield('css')
 </head>

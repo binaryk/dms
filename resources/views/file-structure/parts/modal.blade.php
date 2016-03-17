@@ -10,3 +10,4 @@
         <button class="btn btn-warning" type="button" ng-click="cancel()">Renunta</button>
     </div>
 </script>
+

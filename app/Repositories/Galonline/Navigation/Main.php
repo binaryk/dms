@@ -17,14 +17,29 @@ class Main
 				->caption( trans('sidebar.home') )
 				->show(true)
 		);
-		$this->menu->addOption('posts-daw',
-			\App\Repositories\Ui\Navigation\Option::make()
-				->class(\Request::is('posts*') ? 'active' : '')
-				->url(\URL::route('posts.index'))
-				->icon('icon fa fa-envelope')
-				->caption( trans('sidebar.posts') )
-				->show(true)
-		);
+		if(env('APP_ENV') === 'daw') {
+
+			$this->menu->addOption('posts-daw',
+				\App\Repositories\Ui\Navigation\Option::make()
+					->class(\Request::is('posts*') ? 'active' : '')
+					->url(\URL::route('posts.index'))
+					->icon('icon fa fa-envelope')
+					->caption(trans('sidebar.posts'))
+					->show(true)
+			);
+		}
+		if(env('APP_ENV') === 'ps') {
+
+			$this->menu->addOption('user_accounts',
+				\App\Repositories\Ui\Navigation\Option::make()
+					->class(\Request::is('ps/user-accounts*') ? 'active' : '')
+					->url(\URL::route('ps.accounts.index'))
+					->icon('icon fa fa-users')
+					->caption('User accounts')
+					->show(true)
+			);
+		}
+
 
     	$this->menu->addDropdown('file-structure',
 	        \App\Repositories\Ui\Navigation\Dropdown::make()

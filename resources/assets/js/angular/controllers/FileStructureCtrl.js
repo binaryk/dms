@@ -1,18 +1,22 @@
 'use strict'
-console.log('File str');
-
-var FileStructureCtrl = function($scope, FileStructureService,$uibModal){
+var FileStructureCtrl = function($scope, FileStructureService,$uibModal, $compile){
     const that = this;
+    that.selectedDirScope = null;
     that.addDirectory = () =>{
         that.addDir = ! that.addDir;
     }
 
     that.get = () => {
-        FileStructureService.get().then(data => { that.files = data.files; console.log(data); } );
-
+        FileStructureService.get().then(data => {
+            that.files =  $.map(data.files, function(value) {
+                return [value];
+            });
+            console.log(that.files);
+        });
     }
 
-    that.open = function (current_dir) {
+    that.open = function (scope) {
+        var current_dir = scope.$modelValue
         var modalInstance = $uibModal.open({
             animation: that.animationsEnabled,
             templateUrl: 'addDirector.html',
@@ -36,15 +40,18 @@ var FileStructureCtrl = function($scope, FileStructureService,$uibModal){
             if(data.code === 200){
                 console.log(data);
                 that.addDir = false;
-                that.files[data.inserted.id] = data.inserted;
+                that.files.push(data.inserted);
+                that.form = {};
                 console.log(that.files);
             }else{
-                alert('Erorr');
+                alert('Erorr: '+data.msg);
             }
         });
     }
 
     that.storeChildDirectory = (parent, dirName) => {
+        console.log('parent', parent);
+
         const form = {
             parent: parent,
             current: {
@@ -56,15 +63,47 @@ var FileStructureCtrl = function($scope, FileStructureService,$uibModal){
         FileStructureService.store(form).then(data => {
             if(data.code === 200){
                 console.log(data.inserted);
+                if(parent.children){
+                    parent.children.push(data.inserted);
+                }else{
+                    parent.children = [ data.inserted ];
+                }
             }else{
-                alert('Erorr');
+                alert('Erorr: '+data.msg);
             }
         });
     }
 
-    that.draw = () => {
-
+    that.removeDir = ($itemScope) => {
+        if($itemScope.$parent['file'] === undefined){
+            delete that.files[$itemScope.file.id];
+        }else{
+            const parentChildrens = $itemScope.$parent.file.children;
+            const index  = parentChildrens.indexOf($itemScope.file);
+            parentChildrens.splice(index, 1);
+        }
     }
+
+    that.removeItem = function (scope) {
+        scope.remove();
+        FileStructureService.remove(scope.$modelValue.id).then(data => {
+            if(data.code === 200){
+            }else{
+                alert('Erorr');
+            }
+        });
+    };
+
+    $scope.toggle = function (scope) {
+        scope.toggle();
+    };
+
+    $scope.moveLastToTheBeginning = function () {
+        var a = $scope.data.pop();
+        $scope.data.splice(0, 0, a);
+    };
+
+
 
     that.init = () => {
         that.form = {};
@@ -72,7 +111,11 @@ var FileStructureCtrl = function($scope, FileStructureService,$uibModal){
         that.files = [];
         that.animationsEnabled = true;
         that.menuOptions = [
-            ['Creeaza subdirector', ($itemScope) => {
+            ['Creeaza subdirector', ($itemScope, event) => {
+                that.selectedDirScope = {
+                    scope: $itemScope,
+                    event: event
+                };
                 that.open($itemScope.file)
             }],
             null,
@@ -80,17 +123,10 @@ var FileStructureCtrl = function($scope, FileStructureService,$uibModal){
                 $scope.items.splice($itemScope.$index, 1);
             }],
             null,
-            ['Sterge', $itemScope => {
-                console.log($itemScope);
-                console.log($itemScope.$parent['file'] === undefined);
-                if($itemScope.$parent['file'] === undefined){
-                    delete that.files[$itemScope.file.id];
-                }else{
-                    const parentChildrens = $itemScope.$parent.file.children;
-                     const index  = parentChildrens.indexOf($itemScope.file);
-                     parentChildrens.splice(index, 1);
-                     console.log($itemScope.$parent.file.children.indexOf($itemScope.file));
-                }
+            ['Sterge', ($itemScope, event) => {
+                console.log('$scope.$modelValue',$itemScope, $itemScope.$modelValue, event);
+                //$itemScope.remove();
+                //that.removeDir($itemScope);
 
             }]
         ];
@@ -98,10 +134,9 @@ var FileStructureCtrl = function($scope, FileStructureService,$uibModal){
 
     this.init();
     this.get();
-    this.draw();
 }
 
-FileStructureCtrl.$inject = ['$scope','FileStructureService','$uibModal'];
+FileStructureCtrl.$inject = ['$scope','FileStructureService','$uibModal', '$compile'];
 controllers.controller('FileStructureCtrl', FileStructureCtrl);
 
 controllers.controller('ModalDirectorCtrl', function ($scope, $uibModalInstance, fss, current_dir) {
@@ -109,7 +144,7 @@ controllers.controller('ModalDirectorCtrl', function ($scope, $uibModalInstance,
     $scope.store = () => {
         $uibModalInstance.close($scope.name);
     }
-    
+
     $scope.cancel = () => {
         console.log('cancel');
         $uibModalInstance.close(null);

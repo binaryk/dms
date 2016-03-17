@@ -62,14 +62,19 @@ class FileStructureController extends BaseController
                 ]);
                 File::makeDirectory($user_root->path, 0775, true);
             }
-            $root = FileStructure::create([
-                'name' => $data['name'],
-                'type' => $data['type'],
-                'path' => public_path(config('general.upload') . access()->user()->id . DIRECTORY_SEPARATOR . $data['name']),
-                'user_id' => access()->user()->id,
-            ]);
-            $root->makeChildOf($user_root);
-            File::makeDirectory($root->path, 0775, true);
+            if(! file_exists(public_path(config('general.upload') . access()->user()->id . DIRECTORY_SEPARATOR . $data['name']))){
+                $root = FileStructure::create([
+                    'name' => $data['name'],
+                    'type' => $data['type'],
+                    'path' => public_path(config('general.upload') . access()->user()->id . DIRECTORY_SEPARATOR . $data['name']),
+                    'user_id' => access()->user()->id,
+                ]);
+                $root->makeChildOf($user_root);
+                File::makeDirectory($root->path, 0775, true);
+            }else{
+                throw  new \Exception('Exista deja director cu acest nume', 500);
+            }
+
         }
         catch(\Exception $e){
             return error($e->getMessage());
@@ -77,19 +82,39 @@ class FileStructureController extends BaseController
         return success(['inserted' => $root]);
     }
 
+    public function remove()
+    {
+        $path = null;
+        $dir_deleted = false;
+        try{
+            $data = Input::get('data');
+            $child = FileStructure::find($data);
+            $path  = $child->path;
+            $dir_deleted = File::deleteDirectory($child->path);
+            $child->delete();
+        }catch(\Exception $e){
+            return error($e->getMessage());
+        }
+        return success(['removed' => 'true', 'path' => $path, 'dir_removed' => $dir_deleted]);
+    }
+
     public function dir($data)
     {
         $inserted = null;
         try{
             $root = FileStructure::find($data['parent']['id']);
-            $inserted = FileStructure::create([
-                'name' => $data['current']['name'],
-                'type' => $data['current']['type'],
-                'path' => $root->path . DIRECTORY_SEPARATOR . $data['current']['name'],
-                'user_id' => access()->user()->id,
-            ]);
-            $inserted->makeChildOf($root);
-            File::makeDirectory($inserted->path, 0775, true);
+            if(! file_exists($root->path . DIRECTORY_SEPARATOR . $data['current']['name'])) {
+                $inserted = FileStructure::create([
+                    'name' => $data['current']['name'],
+                    'type' => $data['current']['type'],
+                    'path' => $root->path . DIRECTORY_SEPARATOR . $data['current']['name'],
+                    'user_id' => access()->user()->id,
+                ]);
+                $inserted->makeChildOf($root);
+                File::makeDirectory($inserted->path, 0775, true);
+            }else{
+                throw  new \Exception('Exista deja director cu acest nume', 500);
+            }
         }
         catch(\Exception $e){
             return error($e->getMessage());

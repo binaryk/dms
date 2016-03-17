@@ -6,7 +6,9 @@ return [
 
 		'session/session.php',
 		'files/file-structure.php',
-		'posts/posts.php'
+		'posts/posts.php',
+
+		'ps/ass1.php'
 
 	]
 ];

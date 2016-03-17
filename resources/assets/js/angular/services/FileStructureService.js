@@ -3,8 +3,12 @@ services.factory('FileStructureService', ['$rootScope','$http', function($rootSc
     var mixin = {};
 
     mixin.store = function(data){
-        var rest = {};
         var promise = $http.post($rootScope.config.file_structure_store, {data: data}).then( response => response.data  );
+        return promise;
+    }
+
+    mixin.remove = function(data){
+        var promise = $http.post($rootScope.config.file_structure_remove, {data: data}).then( response => response.data  );
         return promise;
     }
 

@@ -476,12 +476,6 @@ a:hover {
   padding: 0;
   margin-bottom: -5px; }
 
-.btn {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-radius: 1px;
-  border-width: 1px;
-  font-family: 'Roboto Condensed', sans-serif; }
 
 .btn-group-lg > .btn, .btn-group-lg > .btn-lg {
   border-radius: 1px; }

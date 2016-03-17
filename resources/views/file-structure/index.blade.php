@@ -10,3 +10,9 @@
 @stop
 
 @include('file-structure.parts.routes')
+
+@section('css')
+    @parent
+    <link rel="stylesheet" href="{!! asset('components/angular-ui-tree/dist/angular-ui-tree.css') !!}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-tree/2.15.0/angular-ui-tree.min.css">
+@stop

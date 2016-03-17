@@ -1546,10 +1546,9 @@
     if ( ! $.fn.localize ) return;
 
     // detect saved language or use default
-    var currLang = $.localStorage.get(storageKey) || preferredLang;
+    //var currLang = $.localStorage.get(storageKey) || preferredLang;
     // set initial options
     var opts = {
-        language: currLang,
         pathPrefix: pathPrefix,
         callback: function(data, defaultCallback){
           $.localStorage.set(storageKey, currLang); // save the language
@@ -1558,10 +1557,10 @@
       };
 
     // Set initial language
-    setLanguage(opts);
+    //setLanguage(opts);
 
     // Listen for changes
-    $('[data-set-lang]').on('click', function(){
+/*    $('[data-set-lang]').on('click', function(){
 
       currLang = $(this).data('setLang');
 
@@ -1574,7 +1573,7 @@
         activateDropdown($(this));
       }
 
-    });
+    });*/
     
 
     function setLanguage(options) {

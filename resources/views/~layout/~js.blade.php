@@ -57,4 +57,5 @@
     var _config = {};
 </script>
 @yield('js')
+
 @yield('custom-javascript-files')
