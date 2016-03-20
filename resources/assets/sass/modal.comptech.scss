@@ -1,0 +1,74 @@
+.modal-body
+{
+	input.form-control, select.form-control
+	{
+		height:28px;
+		font-size:12px;
+		line-height:28px;
+		border: 1px solid #aaa;
+	}
+
+	textarea.form-control
+	{
+		max-width:100%;
+		min-width:100%;
+		width:100%;
+	}
+
+	.has-error, div.has-error > label
+	{
+		color:#FF0000;
+	}
+
+	.help-block
+	{
+		margin-top:0px;
+		margin-bottom:0px;
+		font-size:11px;
+	}
+
+	.form-group
+	{
+		label
+		{
+			margin-top:1px;
+			font-size:12px;
+		}
+	}
+
+	hr
+	{
+		margin-top:8px;
+		margin-bottom:8px;
+	}
+
+	legend
+	{
+		margin-bottom:2px;
+		font-size:16px;
+	}
+}
+
+.modal-header, .modal-footer
+{
+	padding-top : 5px;
+	padding-bottom: 5px;
+	background-color:#d7d7d7;
+}
+
+.file-input
+{
+	.btn
+	{
+		margin-top:0px;
+	}
+}
+
+.no-show, .fizica, .juridica, .commons
+{
+	display:none;
+}
+
+div[class*=action-form-col]{
+	padding:0px;
+}

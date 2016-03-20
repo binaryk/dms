@@ -1,0 +1,36 @@
+@import "site/grid";
+
+
+.card.summary-inline .card-body
+{
+	padding:5px;
+}
+
+.panel
+{
+	.panel-body
+	{
+		padding:2px;
+	}
+	.row
+	{
+		margin-right:-2px !important;
+		margin-left:-2px  !important;
+	}
+	.row > [class*="col-"] {
+	    padding-left: 2px;
+	    padding-right: 2px;
+	}
+}
+
+div[id*=action-form-col]{
+	.card-action{
+		position: absolute;
+		top: 0px;
+		right:0px;
+
+		.btn-close-form{
+			color: white;
+		}
+	}
+}

@@ -35,6 +35,12 @@ elixir(function(mix) {
         .task('webpack')
         .babel(config.concat(controllers,services,directives), 'public/custom/angular/app.js')
         .version(["public/custom/angular/app.js"])
+        .sass([
+            'site/grid.scss',
+            'dataTables.comptech.scss',
+            'galonline.scss',
+            'modal.comptech.scss'
+        ],'public/custom/css/main.css')
     ;
 });
 

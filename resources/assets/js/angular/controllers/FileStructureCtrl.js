@@ -2,6 +2,7 @@
 var FileStructureCtrl = function($scope, FileStructureService,$uibModal, $compile){
     const that = this;
     that.selectedDirScope = null;
+
     that.addDirectory = () =>{
         that.addDir = ! that.addDir;
     }
@@ -17,6 +18,7 @@ var FileStructureCtrl = function($scope, FileStructureService,$uibModal, $compil
 
     that.open = function (scope) {
         var current_dir = scope.$modelValue
+        that.selectedDirScope = current_dir;
         var modalInstance = $uibModal.open({
             animation: that.animationsEnabled,
             templateUrl: 'addDirector.html',
@@ -27,9 +29,13 @@ var FileStructureCtrl = function($scope, FileStructureService,$uibModal, $compil
             }
         });
         modalInstance.result.then(function (dirName) {
-            that.storeChildDirectory(current_dir, dirName);
-        }, function () {
-            console.log('MoDADSAD');
+            if(dirName){
+                that.storeChildDirectory(current_dir, dirName);
+            }else{
+                console.log('Only close modal!');
+            }
+        }, () => {
+            console.log('Close modal');
         });
     };
 
@@ -141,6 +147,7 @@ controllers.controller('FileStructureCtrl', FileStructureCtrl);
 
 controllers.controller('ModalDirectorCtrl', function ($scope, $uibModalInstance, fss, current_dir) {
     $scope.name = '';
+    $scope.current_name = current_dir.name;
     $scope.store = () => {
         $uibModalInstance.close($scope.name);
     }

@@ -63,7 +63,7 @@
 	
 	var _angularUiBootstrap2 = _interopRequireDefault(_angularUiBootstrap);
 	
-	var _angularUiTree = __webpack_require__(7);
+	var _angularUiTree = __webpack_require__(6);
 	
 	var _angularUiTree2 = _interopRequireDefault(_angularUiTree);
 	
@@ -98,6 +98,7 @@
 	var FileStructureCtrl = function FileStructureCtrl($scope, FileStructureService, $uibModal, $compile) {
 	    var that = this;
 	    that.selectedDirScope = null;
+	
 	    that.addDirectory = function () {
 	        that.addDir = !that.addDir;
 	    };
@@ -113,6 +114,7 @@
 	
 	    that.open = function (scope) {
 	        var _current_dir = scope.$modelValue;
+	        that.selectedDirScope = _current_dir;
 	        var modalInstance = $uibModal.open({
 	            animation: that.animationsEnabled,
 	            templateUrl: 'addDirector.html',
@@ -127,9 +129,13 @@
 	            }
 	        });
 	        modalInstance.result.then(function (dirName) {
-	            that.storeChildDirectory(_current_dir, dirName);
+	            if (dirName) {
+	                that.storeChildDirectory(_current_dir, dirName);
+	            } else {
+	                console.log('Only close modal!');
+	            }
 	        }, function () {
-	            console.log('MoDADSAD');
+	            console.log('Close modal');
 	        });
 	    };
 	
@@ -230,6 +236,7 @@
 	
 	controllers.controller('ModalDirectorCtrl', function ($scope, $uibModalInstance, fss, current_dir) {
 	    $scope.name = '';
+	    $scope.current_name = current_dir.name;
 	    $scope.store = function () {
 	        $uibModalInstance.close($scope.name);
 	    };
@@ -38325,16 +38332,15 @@
 	angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && !angular.$$uibTypeaheadCss && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); angular.$$uibTypeaheadCss = true; });
 
 /***/ },
-/* 6 */,
-/* 7 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(8);
+	__webpack_require__(7);
 	module.exports = 'ui.tree';
 
 
 /***/ },
-/* 8 */
+/* 7 */
 /***/ function(module, exports) {
 
 	/**

@@ -1,0 +1,263 @@
+div.dataTables_wrapper
+{
+
+	.row
+	{
+		margin-bottom:0px;
+	}
+
+	div.dataTables_paginate, 
+	div.dataTables_length, 
+	div.dataTables_filter, 
+	div.dataTables_info,
+	div.dataTables_processing 
+	{
+		margin   : 0px 0px 0px 0px;
+		padding  : 0px 0px 0px 0px;
+		float    : left;
+	}
+
+	div.dataTables_paginate
+	{
+		*
+		{
+			border-radius:initial !important;
+		}
+		height : 34px;
+		ul.pagination
+		{
+			margin:0px;
+		}
+		ul.pagination>li>a, ul.pagination>li>span
+		{
+			padding:7px 12px;
+		}
+	}
+
+	div.dataTables_length, div.dataTables_filter
+	{
+		margin-right:2px;
+	}
+
+	div.dataTables_length, div.dataTables_filter
+	{
+		label
+		{
+			margin:0px;
+			.form-control, input
+			{
+				padding:0px 12px;
+				height:34px;
+				font-size:13px;
+			}
+		}
+	}
+
+	div.dataTables_filter
+	{
+		label
+		{
+			input
+			{
+				margin-left:0px;
+			}
+		}
+	}
+
+	.comptech-soft-toolbar
+	{
+		.btn-toolbar
+		{
+			margin:0px 0px 0px 2px;
+		}
+	}
+}
+
+.galonline-datatable-container
+{
+	table.datatable
+	{
+		margin:2px 0px !important;
+		border-bottom:1px solid #EAEAEA;
+		thead
+		{
+			tr
+			{
+				background-color: #22A7F0;
+				th
+				{
+					color:#fff;
+					font-size:12px;
+					padding:6px 2px;
+					border: 0px !important;
+					.form-group
+					{
+						max-width:100% !important;
+						width:100% !important;
+						min-width:100% !important;
+
+						
+						margin:0px;
+						.input
+						{
+							max-width:100% !important;
+							width:100% !important;
+							min-width:100% !important;
+
+
+							input
+							{
+								border:1px solid #e5e5e5;
+								max-width:100% !important;
+								width:100% !important;
+								min-width:100% !important;
+								padding-left:3px;
+								&:focus
+								{
+									outline:0 !important;
+									border:1px solid #999;
+								}
+							}
+						}
+
+						.form-control
+						{
+							height:initial;
+							padding-top:0px;
+							padding-bottom:0px;
+						}
+
+						select
+						{
+							font-size:12px;
+							height:21px !important;
+						}
+					}
+				}
+			}
+			tr:first-child
+			{
+				background-color:#CCC;
+				th
+				{
+					*
+					{
+						font-weight:normal !important;
+						color:#666 !important;
+					}
+				}
+			}
+		}
+
+		tbody
+		{
+			tr
+			{
+				td
+				{
+					color:#666;
+					font-size:12px;
+					padding:2px;
+
+					button
+					{
+						margin:0px;
+						min-width:22px;
+					}
+
+					a
+					{
+						color:#22A7F0;
+						&:hover
+						{
+							text-decoration:underline;
+						}
+					}
+				}
+
+				td.cell-right
+				{
+					text-align:right;
+				}
+
+				td.cell-center
+				{
+					text-align:center;
+				}
+
+				td.cell-left
+				{
+					text-align:left;
+				}
+			}
+		}
+	}
+}
+
+.action-form-col
+{
+	display:none;
+	.card
+	{
+		.card-header
+		{
+			background-color:#F3F3F3;
+			.card-title, .card-action
+			{
+				padding:6px 3px;
+			}
+			.card-action
+			{
+				button
+				{
+					margin:0px;
+					padding:0px;
+				}
+			}
+		}
+
+		.card-body
+		{
+			.sub-title
+			{
+				margin-bottom:0px;
+				padding:0px 0px 2px 0px;
+			}
+			p
+			{
+				margin-bottom:0px;
+			}
+
+			.has-error, div.has-error > label
+			{
+				color:#FF0000;
+				input
+				{
+					border:1px solid #F00;
+				}
+			}
+
+			.help-block
+			{
+				margin-top:0px;
+				margin-bottom:0px;
+				font-size:11px;
+			}
+
+			input.form-control, select.form-control
+			{
+				height:28px;
+				font-size:12px;
+				line-height:28px;
+				border: 1px solid #aaa;
+			}
+
+			textarea.form-control
+			{
+				font-size:12px;
+				max-width:100%;
+				min-width:100%;
+			}
+		}
+	}
+}

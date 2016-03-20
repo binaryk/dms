@@ -1,0 +1,207 @@
+div.dataTables_wrapper
+{
+	div.dataTables_paginate, 
+	div.dataTables_length, 
+	div.dataTables_filter, 
+	div.dataTables_info,
+	div.dataTables_processing 
+	{
+		margin:0px 2px 0px 0px;
+		float:left;
+	}
+
+	div.dataTables_length
+	{
+	}
+
+	div.dataTables_filter
+	{
+		input
+		{
+			margin-left:0px;
+		}
+	}
+
+	div.dataTables_info
+	{
+		clear:initial;
+	}
+
+	div.dataTables_paginate
+	{
+		*
+		{
+			border-radius:initial !important;
+		}
+		padding:0;
+		ul.pagination
+		{
+			margin:0;
+			
+			li>a
+			{
+				padding:5px 12px 5px 12px;
+			}
+		}
+	}
+
+	div.dataTables_processing 
+	{
+	}
+
+	div.dataTables_toolbar, div.dataTables_refresh
+	{
+		float:right;
+		margin:0px 0px 0px 2px;
+		*
+		{
+			margin:0;
+		}
+	}
+
+	div.dataTables_toolbar
+	{
+		button, div.btn-group-order button, div.btn-group-filter button
+		{
+			margin-left:2px;
+		}
+		button
+		{
+			a
+			{
+				color:#fff;
+			}
+		}
+	}
+
+	table.datatable
+	{
+		td
+		{
+			padding:3px;
+			*
+			{
+				margin:0px;
+			}
+		}
+		th
+		{
+			padding:2px;
+		}
+
+		th.sorting,
+		th.sorting_asc,
+		th.sorting_desc
+		{
+			&:after
+			{
+				top:3px;
+				right:1px;
+			}
+		}
+
+		th.sorting:after
+		{
+			color:#080;
+		}
+		th.sorting_asc:after
+		{
+			color:#00f;
+		}
+		th.sorting_desc:after
+		{
+			color:#088;
+		}
+
+		td.f-small
+		{
+			font-size:85%;
+		}
+		td.f-medium
+		{
+			font-size:90%;
+		}
+
+		td.h-left, th.h-left
+		{
+			text-align:left;
+		}
+		td.h-center, th.h-center
+		{
+			text-align:center;
+		}
+		td.h-right, th.h-right
+		{
+			text-align:right;
+		}
+
+		td.v-top
+		{
+			vertical-align:top;
+		}
+		td.v-middle
+		{
+			vertical-align:middle;
+		}
+		td.v-bottom
+		{
+			vertical-align:bottom;
+		}
+		th
+		{
+			vertical-align:middle;
+			.form-group-search
+			{
+				width:100%;
+				.form-column-search
+				{
+					width:100%;
+					font-size:12px;
+					padding:4px;
+					font-weight:initial;
+				}
+			}
+		}
+	}
+}
+
+#grid-localitati
+{
+	#header-minoritati, #header-varsta
+	{
+		font-weight:normal;
+		div
+		{
+			padding:0px;
+			margin:0px;
+		}
+		padding:1px;
+		table
+		{
+			margin-bottom:0px;
+			td
+			{
+				font-size:10px;
+				padding:1px;
+			}
+		}
+	}
+	tbody
+	{
+		td
+		{
+			font-size:10px;
+			padding:1px;
+		}
+
+		td.populatie
+		{
+			text-align:right;
+		}
+
+		td.total
+		{
+			background-color:#f3f3f3;
+		}
+	}
+}

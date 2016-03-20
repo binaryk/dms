@@ -64,14 +64,14 @@ class Main
             \App\Repositories\Ui\Navigation\Dropdown::make()
                 ->id('nomenclatoare-dropdown')
                 ->icon('icon fa fa-book')
-                ->active(\Request::is('admin/type-docs*') ? 'active' : '')
+                ->active(\Request::is('superadmin/nomenclatoare/*') ? 'active' : '')
                 ->caption( trans('sidebar.nomenclator') )
                 ->count('1')
                 /*Tipuri de documente acceptate*/
                 ->addOption('tipuri-documente-dropdown',
                     \App\Repositories\Ui\Navigation\Option::make()
-                        ->class('')
-                        ->url(\URL::to('/') )
+						->class(\Request::is('superadmin/nomenclatoare/file-types') ? 'active' : '')
+                        ->url(route('superadmin.nomenclatoare.file-types.index') )
                         ->icon('')
                         ->caption( trans('sidebar.doc_type') )
                         ->show(true)

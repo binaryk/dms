@@ -1,5 +1,3 @@
-
-
 @section('heading')
     @parent
     <div class="btn-group pull-right" ng-hide="fs.addDir">

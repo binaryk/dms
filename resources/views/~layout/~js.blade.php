@@ -23,27 +23,27 @@
 {!! HTML::script('angel/js/app.js') !!}
 
 
-{!! Html::script('vendor/select2/js/select2.full.min.js') !!}
-{!! Html::script('vendor/select2/js/i18n/ro.js') !!}
+{!! HTML::script('vendor/select2/js/select2.full.min.js') !!}
+{!! HTML::script('vendor/select2/js/i18n/ro.js') !!}
 
-{!! Html::script('vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') !!}
-{!! Html::script('vendor/bootstrap-datepicker/locales/bootstrap-datepicker.ro.min.js') !!}
+{!! HTML::script('vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') !!}
+{!! HTML::script('vendor/bootstrap-datepicker/locales/bootstrap-datepicker.ro.min.js') !!}
 
-{!! Html::script('vendor/numeral/numeral.min.js') !!}
-{!! Html::script('vendor/numeral/ro.js') !!}
-{!! Html::script('vendor/moment/moment.min.js') !!}
+{!! HTML::script('vendor/numeral/numeral.min.js') !!}
+{!! HTML::script('vendor/numeral/ro.js') !!}
+{!! HTML::script('vendor/moment/moment.min.js') !!}
 
-{!! Html::script('vendor/file-input/js/fileinput.min.js') !!}
-{!! Html::script('vendor/file-input/js/fileinput_locale_ro.js') !!}
+{!! HTML::script('vendor/file-input/js/fileinput.min.js') !!}
+{!! HTML::script('vendor/file-input/js/fileinput_locale_ro.js') !!}
 
-{!! Html::script('comptech/helper/ajax.js') !!}
-{!! Html::script('comptech/ui/modal.js') !!}
-{!! Html::script('comptech/actions/actions.js') !!}
-{!! Html::script('comptech/actions/filter.js') !!}
+{!! HTML::script('comptech/helper/ajax.js') !!}
+{!! HTML::script('comptech/ui/modal.js') !!}
+{!! HTML::script('comptech/actions/actions.js') !!}
+{!! HTML::script('comptech/actions/filter.js') !!}
 
 
 
-{!! Html::script('custom/angular/main.js') !!}
+{!! HTML::script('custom/angular/main.js') !!}
 <script>
     var token = $('meta[name="csrf_token"]').attr('content');
     $.ajaxSetup({
@@ -59,3 +59,9 @@
 @yield('js')
 
 @yield('custom-javascript-files')
+<script>
+    $(document).ready( function(){
+//        myApp = ComptechApp();
+        @yield('jquery-document-ready')
+    });
+</script>

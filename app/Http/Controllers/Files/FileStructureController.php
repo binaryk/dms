@@ -48,6 +48,9 @@ class FileStructureController extends BaseController
     public function rootDir($data)
     {
         $root = null;
+        if($data['name'] === ''){
+            return error('Lungimea numelui trebuie sa aiba minim un caracter.');
+        }
         try{
             // make user root
             $user_root_path = public_path(config('general.upload') . access()->user()->id);
@@ -101,6 +104,9 @@ class FileStructureController extends BaseController
     public function dir($data)
     {
         $inserted = null;
+        if($data['current']['name'] === ''){
+            return error('Lungimea numelui trebuie sa aiba minim un caracter.');
+        }
         try{
             $root = FileStructure::find($data['parent']['id']);
             if(! file_exists($root->path . DIRECTORY_SEPARATOR . $data['current']['name'])) {

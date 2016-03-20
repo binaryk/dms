@@ -1,0 +1,435 @@
+div.dataTables_wrapper .row {
+  margin-bottom: 0px; }
+
+div.dataTables_wrapper div.dataTables_paginate,
+div.dataTables_wrapper div.dataTables_length,
+div.dataTables_wrapper div.dataTables_filter,
+div.dataTables_wrapper div.dataTables_info,
+div.dataTables_wrapper div.dataTables_processing {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  float: left; }
+
+div.dataTables_wrapper div.dataTables_paginate {
+  height: 34px; }
+  div.dataTables_wrapper div.dataTables_paginate * {
+    border-radius: initial !important; }
+  div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    margin: 0px; }
+  div.dataTables_wrapper div.dataTables_paginate ul.pagination > li > a, div.dataTables_wrapper div.dataTables_paginate ul.pagination > li > span {
+    padding: 7px 12px; }
+
+div.dataTables_wrapper div.dataTables_length, div.dataTables_wrapper div.dataTables_filter {
+  margin-right: 2px; }
+
+div.dataTables_wrapper div.dataTables_length label, div.dataTables_wrapper div.dataTables_filter label {
+  margin: 0px; }
+  div.dataTables_wrapper div.dataTables_length label .form-control, div.dataTables_wrapper div.dataTables_length label input, div.dataTables_wrapper div.dataTables_filter label .form-control, div.dataTables_wrapper div.dataTables_filter label input {
+    padding: 0px 12px;
+    height: 34px;
+    font-size: 13px; }
+
+div.dataTables_wrapper div.dataTables_filter label input {
+  margin-left: 0px; }
+
+div.dataTables_wrapper .comptech-soft-toolbar .btn-toolbar {
+  margin: 0px 0px 0px 2px; }
+
+.galonline-datatable-container table.datatable {
+  margin: 2px 0px !important;
+  border-bottom: 1px solid #EAEAEA; }
+  .galonline-datatable-container table.datatable thead tr {
+    background-color: #22A7F0; }
+    .galonline-datatable-container table.datatable thead tr th {
+      color: #fff;
+      font-size: 12px;
+      padding: 6px 2px;
+      border: 0px !important; }
+      .galonline-datatable-container table.datatable thead tr th .form-group {
+        max-width: 100% !important;
+        width: 100% !important;
+        min-width: 100% !important;
+        margin: 0px; }
+        .galonline-datatable-container table.datatable thead tr th .form-group .input {
+          max-width: 100% !important;
+          width: 100% !important;
+          min-width: 100% !important; }
+          .galonline-datatable-container table.datatable thead tr th .form-group .input input {
+            border: 1px solid #e5e5e5;
+            max-width: 100% !important;
+            width: 100% !important;
+            min-width: 100% !important;
+            padding-left: 3px; }
+            .galonline-datatable-container table.datatable thead tr th .form-group .input input:focus {
+              outline: 0 !important;
+              border: 1px solid #999; }
+        .galonline-datatable-container table.datatable thead tr th .form-group .form-control {
+          height: initial;
+          padding-top: 0px;
+          padding-bottom: 0px; }
+        .galonline-datatable-container table.datatable thead tr th .form-group select {
+          font-size: 12px;
+          height: 21px !important; }
+  .galonline-datatable-container table.datatable thead tr:first-child {
+    background-color: #CCC; }
+    .galonline-datatable-container table.datatable thead tr:first-child th * {
+      font-weight: normal !important;
+      color: #666 !important; }
+  .galonline-datatable-container table.datatable tbody tr td {
+    color: #666;
+    font-size: 12px;
+    padding: 2px; }
+    .galonline-datatable-container table.datatable tbody tr td button {
+      margin: 0px;
+      min-width: 22px; }
+    .galonline-datatable-container table.datatable tbody tr td a {
+      color: #22A7F0; }
+      .galonline-datatable-container table.datatable tbody tr td a:hover {
+        text-decoration: underline; }
+  .galonline-datatable-container table.datatable tbody tr td.cell-right {
+    text-align: right; }
+  .galonline-datatable-container table.datatable tbody tr td.cell-center {
+    text-align: center; }
+  .galonline-datatable-container table.datatable tbody tr td.cell-left {
+    text-align: left; }
+
+.action-form-col {
+  display: none; }
+  .action-form-col .card .card-header {
+    background-color: #F3F3F3; }
+    .action-form-col .card .card-header .card-title, .action-form-col .card .card-header .card-action {
+      padding: 6px 3px; }
+    .action-form-col .card .card-header .card-action button {
+      margin: 0px;
+      padding: 0px; }
+  .action-form-col .card .card-body .sub-title {
+    margin-bottom: 0px;
+    padding: 0px 0px 2px 0px; }
+  .action-form-col .card .card-body p {
+    margin-bottom: 0px; }
+  .action-form-col .card .card-body .has-error, .action-form-col .card .card-body div.has-error > label {
+    color: #FF0000; }
+    .action-form-col .card .card-body .has-error input, .action-form-col .card .card-body div.has-error > label input {
+      border: 1px solid #F00; }
+  .action-form-col .card .card-body .help-block {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 11px; }
+  .action-form-col .card .card-body input.form-control, .action-form-col .card .card-body select.form-control {
+    height: 28px;
+    font-size: 12px;
+    line-height: 28px;
+    border: 1px solid #aaa; }
+  .action-form-col .card .card-body textarea.form-control {
+    font-size: 12px;
+    max-width: 100%;
+    min-width: 100%; }
+
+div.dataTables_wrapper div.dataTables_paginate,
+div.dataTables_wrapper div.dataTables_length,
+div.dataTables_wrapper div.dataTables_filter,
+div.dataTables_wrapper div.dataTables_info,
+div.dataTables_wrapper div.dataTables_processing {
+  margin: 0px 2px 0px 0px;
+  float: left; }
+
+div.dataTables_wrapper div.dataTables_filter input {
+  margin-left: 0px; }
+
+div.dataTables_wrapper div.dataTables_info {
+  clear: initial; }
+
+div.dataTables_wrapper div.dataTables_paginate {
+  padding: 0; }
+  div.dataTables_wrapper div.dataTables_paginate * {
+    border-radius: initial !important; }
+  div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    margin: 0; }
+    div.dataTables_wrapper div.dataTables_paginate ul.pagination li > a {
+      padding: 5px 12px 5px 12px; }
+
+div.dataTables_wrapper div.dataTables_toolbar, div.dataTables_wrapper div.dataTables_refresh {
+  float: right;
+  margin: 0px 0px 0px 2px; }
+  div.dataTables_wrapper div.dataTables_toolbar *, div.dataTables_wrapper div.dataTables_refresh * {
+    margin: 0; }
+
+div.dataTables_wrapper div.dataTables_toolbar button, div.dataTables_wrapper div.dataTables_toolbar div.btn-group-order button, div.dataTables_wrapper div.dataTables_toolbar div.btn-group-filter button {
+  margin-left: 2px; }
+
+div.dataTables_wrapper div.dataTables_toolbar button a {
+  color: #fff; }
+
+div.dataTables_wrapper table.datatable td {
+  padding: 3px; }
+  div.dataTables_wrapper table.datatable td * {
+    margin: 0px; }
+
+div.dataTables_wrapper table.datatable th {
+  padding: 2px; }
+
+div.dataTables_wrapper table.datatable th.sorting:after,
+div.dataTables_wrapper table.datatable th.sorting_asc:after,
+div.dataTables_wrapper table.datatable th.sorting_desc:after {
+  top: 3px;
+  right: 1px; }
+
+div.dataTables_wrapper table.datatable th.sorting:after {
+  color: #080; }
+
+div.dataTables_wrapper table.datatable th.sorting_asc:after {
+  color: #00f; }
+
+div.dataTables_wrapper table.datatable th.sorting_desc:after {
+  color: #088; }
+
+div.dataTables_wrapper table.datatable td.f-small {
+  font-size: 85%; }
+
+div.dataTables_wrapper table.datatable td.f-medium {
+  font-size: 90%; }
+
+div.dataTables_wrapper table.datatable td.h-left, div.dataTables_wrapper table.datatable th.h-left {
+  text-align: left; }
+
+div.dataTables_wrapper table.datatable td.h-center, div.dataTables_wrapper table.datatable th.h-center {
+  text-align: center; }
+
+div.dataTables_wrapper table.datatable td.h-right, div.dataTables_wrapper table.datatable th.h-right {
+  text-align: right; }
+
+div.dataTables_wrapper table.datatable td.v-top {
+  vertical-align: top; }
+
+div.dataTables_wrapper table.datatable td.v-middle {
+  vertical-align: middle; }
+
+div.dataTables_wrapper table.datatable td.v-bottom {
+  vertical-align: bottom; }
+
+div.dataTables_wrapper table.datatable th {
+  vertical-align: middle; }
+  div.dataTables_wrapper table.datatable th .form-group-search {
+    width: 100%; }
+    div.dataTables_wrapper table.datatable th .form-group-search .form-column-search {
+      width: 100%;
+      font-size: 12px;
+      padding: 4px;
+      font-weight: initial; }
+
+#grid-localitati #header-minoritati, #grid-localitati #header-varsta {
+  font-weight: normal;
+  padding: 1px; }
+  #grid-localitati #header-minoritati div, #grid-localitati #header-varsta div {
+    padding: 0px;
+    margin: 0px; }
+  #grid-localitati #header-minoritati table, #grid-localitati #header-varsta table {
+    margin-bottom: 0px; }
+    #grid-localitati #header-minoritati table td, #grid-localitati #header-varsta table td {
+      font-size: 10px;
+      padding: 1px; }
+
+#grid-localitati tbody td {
+  font-size: 10px;
+  padding: 1px; }
+
+#grid-localitati tbody td.populatie {
+  text-align: right; }
+
+#grid-localitati tbody td.total {
+  background-color: #f3f3f3; }
+
+div.dataTables_wrapper .row {
+  margin-bottom: 0px; }
+
+div.dataTables_wrapper div.dataTables_paginate,
+div.dataTables_wrapper div.dataTables_length,
+div.dataTables_wrapper div.dataTables_filter,
+div.dataTables_wrapper div.dataTables_info,
+div.dataTables_wrapper div.dataTables_processing {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  float: left; }
+
+div.dataTables_wrapper div.dataTables_paginate {
+  height: 34px; }
+  div.dataTables_wrapper div.dataTables_paginate * {
+    border-radius: initial !important; }
+  div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    margin: 0px; }
+  div.dataTables_wrapper div.dataTables_paginate ul.pagination > li > a, div.dataTables_wrapper div.dataTables_paginate ul.pagination > li > span {
+    padding: 7px 12px; }
+
+div.dataTables_wrapper div.dataTables_length, div.dataTables_wrapper div.dataTables_filter {
+  margin-right: 2px; }
+
+div.dataTables_wrapper div.dataTables_length label, div.dataTables_wrapper div.dataTables_filter label {
+  margin: 0px; }
+  div.dataTables_wrapper div.dataTables_length label .form-control, div.dataTables_wrapper div.dataTables_length label input, div.dataTables_wrapper div.dataTables_filter label .form-control, div.dataTables_wrapper div.dataTables_filter label input {
+    padding: 0px 12px;
+    height: 34px;
+    font-size: 13px; }
+
+div.dataTables_wrapper div.dataTables_filter label input {
+  margin-left: 0px; }
+
+div.dataTables_wrapper .comptech-soft-toolbar .btn-toolbar {
+  margin: 0px 0px 0px 2px; }
+
+.galonline-datatable-container table.datatable {
+  margin: 2px 0px !important;
+  border-bottom: 1px solid #EAEAEA; }
+  .galonline-datatable-container table.datatable thead tr {
+    background-color: #22A7F0; }
+    .galonline-datatable-container table.datatable thead tr th {
+      color: #fff;
+      font-size: 12px;
+      padding: 6px 2px;
+      border: 0px !important; }
+      .galonline-datatable-container table.datatable thead tr th .form-group {
+        max-width: 100% !important;
+        width: 100% !important;
+        min-width: 100% !important;
+        margin: 0px; }
+        .galonline-datatable-container table.datatable thead tr th .form-group .input {
+          max-width: 100% !important;
+          width: 100% !important;
+          min-width: 100% !important; }
+          .galonline-datatable-container table.datatable thead tr th .form-group .input input {
+            border: 1px solid #e5e5e5;
+            max-width: 100% !important;
+            width: 100% !important;
+            min-width: 100% !important;
+            padding-left: 3px; }
+            .galonline-datatable-container table.datatable thead tr th .form-group .input input:focus {
+              outline: 0 !important;
+              border: 1px solid #999; }
+        .galonline-datatable-container table.datatable thead tr th .form-group .form-control {
+          height: initial;
+          padding-top: 0px;
+          padding-bottom: 0px; }
+        .galonline-datatable-container table.datatable thead tr th .form-group select {
+          font-size: 12px;
+          height: 21px !important; }
+  .galonline-datatable-container table.datatable thead tr:first-child {
+    background-color: #CCC; }
+    .galonline-datatable-container table.datatable thead tr:first-child th * {
+      font-weight: normal !important;
+      color: #666 !important; }
+  .galonline-datatable-container table.datatable tbody tr td {
+    color: #666;
+    font-size: 12px;
+    padding: 2px; }
+    .galonline-datatable-container table.datatable tbody tr td button {
+      margin: 0px;
+      min-width: 22px; }
+    .galonline-datatable-container table.datatable tbody tr td a {
+      color: #22A7F0; }
+      .galonline-datatable-container table.datatable tbody tr td a:hover {
+        text-decoration: underline; }
+  .galonline-datatable-container table.datatable tbody tr td.cell-right {
+    text-align: right; }
+  .galonline-datatable-container table.datatable tbody tr td.cell-center {
+    text-align: center; }
+  .galonline-datatable-container table.datatable tbody tr td.cell-left {
+    text-align: left; }
+
+.action-form-col {
+  display: none; }
+  .action-form-col .card .card-header {
+    background-color: #F3F3F3; }
+    .action-form-col .card .card-header .card-title, .action-form-col .card .card-header .card-action {
+      padding: 6px 3px; }
+    .action-form-col .card .card-header .card-action button {
+      margin: 0px;
+      padding: 0px; }
+  .action-form-col .card .card-body .sub-title {
+    margin-bottom: 0px;
+    padding: 0px 0px 2px 0px; }
+  .action-form-col .card .card-body p {
+    margin-bottom: 0px; }
+  .action-form-col .card .card-body .has-error, .action-form-col .card .card-body div.has-error > label {
+    color: #FF0000; }
+    .action-form-col .card .card-body .has-error input, .action-form-col .card .card-body div.has-error > label input {
+      border: 1px solid #F00; }
+  .action-form-col .card .card-body .help-block {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 11px; }
+  .action-form-col .card .card-body input.form-control, .action-form-col .card .card-body select.form-control {
+    height: 28px;
+    font-size: 12px;
+    line-height: 28px;
+    border: 1px solid #aaa; }
+  .action-form-col .card .card-body textarea.form-control {
+    font-size: 12px;
+    max-width: 100%;
+    min-width: 100%; }
+
+.card.summary-inline .card-body {
+  padding: 5px; }
+
+.panel .panel-body {
+  padding: 2px; }
+
+.panel .row {
+  margin-right: -2px !important;
+  margin-left: -2px  !important; }
+
+.panel .row > [class*="col-"] {
+  padding-left: 2px;
+  padding-right: 2px; }
+
+div[id*=action-form-col] .card-action {
+  position: absolute;
+  top: 0px;
+  right: 0px; }
+  div[id*=action-form-col] .card-action .btn-close-form {
+    color: white; }
+
+.modal-body input.form-control, .modal-body select.form-control {
+  height: 28px;
+  font-size: 12px;
+  line-height: 28px;
+  border: 1px solid #aaa; }
+
+.modal-body textarea.form-control {
+  max-width: 100%;
+  min-width: 100%;
+  width: 100%; }
+
+.modal-body .has-error, .modal-body div.has-error > label {
+  color: #FF0000; }
+
+.modal-body .help-block {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 11px; }
+
+.modal-body .form-group label {
+  margin-top: 1px;
+  font-size: 12px; }
+
+.modal-body hr {
+  margin-top: 8px;
+  margin-bottom: 8px; }
+
+.modal-body legend {
+  margin-bottom: 2px;
+  font-size: 16px; }
+
+.modal-header, .modal-footer {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #d7d7d7; }
+
+.file-input .btn {
+  margin-top: 0px; }
+
+.no-show, .fizica, .juridica, .commons {
+  display: none; }
+
+div[class*=action-form-col] {
+  padding: 0px; }
+
+/*# sourceMappingURL=main.css.map */
