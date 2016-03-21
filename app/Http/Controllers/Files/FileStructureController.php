@@ -62,6 +62,7 @@ class FileStructureController extends BaseController
                     'type' => 'director',
                     'path' => public_path(config('general.upload') . access()->user()->id),
                     'user_id' => access()->user()->id,
+                    'location' => asset(config('general.upload') . access()->user()->id),
                 ]);
                 File::makeDirectory($user_root->path, 0775, true);
             }
@@ -71,6 +72,7 @@ class FileStructureController extends BaseController
                     'type' => $data['type'],
                     'path' => public_path(config('general.upload') . access()->user()->id . DIRECTORY_SEPARATOR . $data['name']),
                     'user_id' => access()->user()->id,
+                    'location' => asset(config('general.upload') . access()->user()->id . DIRECTORY_SEPARATOR . $data['name']),
                 ]);
                 $root->makeChildOf($user_root);
                 File::makeDirectory($root->path, 0775, true);
@@ -115,6 +117,7 @@ class FileStructureController extends BaseController
                     'type' => $data['current']['type'],
                     'path' => $root->path . DIRECTORY_SEPARATOR . $data['current']['name'],
                     'user_id' => access()->user()->id,
+                    'location' => $root->location . DIRECTORY_SEPARATOR . $data['current']['name'],
                 ]);
                 $inserted->makeChildOf($root);
                 File::makeDirectory($inserted->path, 0775, true);

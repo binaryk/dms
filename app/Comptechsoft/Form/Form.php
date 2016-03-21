@@ -1,12 +1,16 @@
 <?php namespace App\Comptechsoft\Form;
 
+use Illuminate\Support\Facades\File;
+
 class Form
 {
     protected $id     = NULL;
+    protected $grid_id= NULL;
     protected $action = NULL;
     protected $view   = NULL;
     protected $route  = NULL;
     protected $record = NULL;
+    protected $parameters = NULL;
 
     protected $captions = [
         'insert' => 'insert',
@@ -20,10 +24,38 @@ class Form
         'delete' => 'Şterge',
     ];
 
-    public function __construct($action, $id, $record = NULL)
+    public function getParameter($property)
+    {
+        if( ! array_key_exists($property, $this->parameters) )
+        {
+            throw new \Exception(__CLASS__ . ': Nu avem proprietatea '.$property.' in parameters', 1);
+        }
+        return $this->parameters[$property];
+    }
+
+    public function setParameter($property, $value)
+    {
+        $this->parameters[$property] = $value;
+        return $this;
+    }
+
+    public function setGridId($id)
+    {
+        $this->grid_id = $id;
+        return $this;
+    }
+
+    public function getGridId()
+    {
+        return $this->grid_id;
+    }
+
+
+    public function __construct($action, $id, $record = NULL, $grid_id = NULL)
     {
         $this->id     = $id;
         $this->action = $action;
+        $this->grid_id = $grid_id;
     }
 
     public function __call( $method, $arguments)
@@ -60,6 +92,6 @@ class Form
 
     public function render()
     {
-        return view($this->view)->withAction($this->action)->withRecord($this->record)->render();
+        return '<form enctype="multipart/form-data" role="form" method="POST" id="'.($this->grid_id ? $this->grid_id : "gridDefault").'">' . view($this->view)->withAction($this->action)->withRecord($this->record)->withData($this->parameters)->render() . '</form>';
     }
 }

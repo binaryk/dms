@@ -22,12 +22,6 @@ class Grid extends \App\Comptechsoft\Datatable\Grid
 		 * In ce fisier sa se genereze js-ul pentru .DataTable({...});
 		 */
 		$this->js( str_replace('\\', '/', public_path('custom/js/director-files/grid.js') ));
-
-		/*
-		 * De la ce ruta vine raspunsul cu randuri
-		 */
-		$this->ajax( (new Ajax())->setUrl(\URL::route('director-files.data-source'))->setExtra(['a' => 1, 'b' => 2]) );
-		
 		/*
 		 * Care coloana contine ordinea initiala
 		 */
@@ -81,7 +75,7 @@ class Grid extends \App\Comptechsoft\Datatable\Grid
 				(new Column())
 				->withHeader(
 					(new Header())
-					->with(['caption' => 'Autor', 'width' => 10])
+					->with(['caption' => 'Autor', 'width' => 7])
 				),
 
 			'path' =>
@@ -106,5 +100,14 @@ class Grid extends \App\Comptechsoft\Datatable\Grid
 				),
 		]);
 
+	}
+
+	public function setUrl()
+	{
+		/*
+		 * De la ce ruta vine raspunsul cu randuri
+		 */
+		$this->ajax( (new Ajax())->setUrl(\URL::route('director-files.data-source',['id' => $this->getParameter('dir_id'),'grid_id' => $this->id]))->setExtra(['a' => 1, 'b' => 2]) );
+		return $this;
 	}
 }

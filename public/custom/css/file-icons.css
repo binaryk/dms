@@ -1,0 +1,45 @@
+.ui-58{
+    max-width:1100px;
+    margin:100px auto;
+}
+.ui-58 .ui-item{
+    max-width:120px;
+    display:block;
+    padding:20px 5px;
+    border-radius:2px;
+    text-align:center;
+    position:relative;
+    margin:20px auto;
+    border:1px solid #fff;
+}
+.ui-58 .ui-item:hover{
+    background:#f4f8fd;
+    border:1px solid #32c8de;
+}
+.ui-58 .ui-item i{
+    font-size:40px;
+    position:relative;
+    margin-bottom:10px;
+    font-weight:normal;
+    color:#ccc;
+}
+.ui-58 .ui-item span{
+    display:block;
+    position:absolute;
+    background:#777;
+    padding:0 5px;
+    border-radius:2px;
+    color:#fff;
+    top:40px;
+    left:65px;
+    font-weight:600;
+    font-size:10px;
+    line-height:17px;
+    text-transform:uppercase;
+}
+.ui-58 .ui-item h4{
+    color:#999;
+    font-size:14px;
+    line-height:15px;
+    font-weight:400;
+}

@@ -54,7 +54,9 @@
         '_token' : token,
         async    : false
     });
-    var _config = {};
+    var _config = {
+        base: "{!! url('/') !!}"
+    };
 </script>
 @yield('js')
 

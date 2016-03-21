@@ -10,6 +10,7 @@
 
     this.init = function(){
         _this.grid.dt.ajax.reload( function(json){ console.log(json); }, true);
+        return _this;
     }
 
     /*

@@ -49,7 +49,7 @@ function MainCtrl($scope) {}
 MainCtrl.$inject = ['$scope'];
 controllers.controller('MainCtrl', MainCtrl);
 'use strict';
-var FileStructureCtrl = function FileStructureCtrl($scope, FileStructureService, $uibModal, $compile) {
+var FileStructureCtrl = function FileStructureCtrl($scope, FileStructureService, $uibModal, $compile, $location, $rootScope) {
     var that = this;
     that.selectedDirScope = null;
 
@@ -91,6 +91,10 @@ var FileStructureCtrl = function FileStructureCtrl($scope, FileStructureService,
         }, function () {
             console.log('Close modal');
         });
+    };
+
+    that.goToFolder = function (id) {
+        location.href = 'director-files/' + id;
     };
 
     that.storeDirectory = function () {
@@ -185,7 +189,7 @@ var FileStructureCtrl = function FileStructureCtrl($scope, FileStructureService,
     this.get();
 };
 
-FileStructureCtrl.$inject = ['$scope', 'FileStructureService', '$uibModal', '$compile'];
+FileStructureCtrl.$inject = ['$scope', 'FileStructureService', '$uibModal', '$compile', '$location', '$rootScope'];
 controllers.controller('FileStructureCtrl', FileStructureCtrl);
 
 controllers.controller('ModalDirectorCtrl', function ($scope, $uibModalInstance, fss, current_dir) {

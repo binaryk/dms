@@ -1,5 +1,5 @@
 'use strict'
-var FileStructureCtrl = function($scope, FileStructureService,$uibModal, $compile){
+var FileStructureCtrl = function($scope, FileStructureService,$uibModal, $compile, $location, $rootScope){
     const that = this;
     that.selectedDirScope = null;
 
@@ -38,6 +38,10 @@ var FileStructureCtrl = function($scope, FileStructureService,$uibModal, $compil
             console.log('Close modal');
         });
     };
+
+    that.goToFolder = (id) => {
+        location.href = 'director-files/' + id;
+    }
 
     that.storeDirectory = () => {
     that.form.type = 'director';
@@ -142,7 +146,7 @@ var FileStructureCtrl = function($scope, FileStructureService,$uibModal, $compil
     this.get();
 }
 
-FileStructureCtrl.$inject = ['$scope','FileStructureService','$uibModal', '$compile'];
+FileStructureCtrl.$inject = ['$scope','FileStructureService','$uibModal', '$compile', '$location', '$rootScope'];
 controllers.controller('FileStructureCtrl', FileStructureCtrl);
 
 controllers.controller('ModalDirectorCtrl', function ($scope, $uibModalInstance, fss, current_dir) {

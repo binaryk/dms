@@ -7,4 +7,5 @@ return [
     'nomenclator' => 'Nomenclatoare',
     'file_struct' => 'Structura de fisiere',
     'posts' => 'Posturi',
+    'folder_structure' => 'Structura dvs de directoare',
 ];

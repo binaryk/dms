@@ -7,7 +7,7 @@
         [[ file.name ]]
         <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="fs.removeItem(this)" title="Șterge director"><span class="fa fa-remove"></span></a>
         <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="fs.open(this)" style="margin-right: 8px;" title="Adaugă un director fiu"><span class="fa fa-plus"></span></a>
-        <a class="pull-right btn btn-primary btn-xs" title="Vezi fișiere" data-nodrag ng-click="fs.viewFiles(this)" style="margin-right: 8px;"><span class="fa fa-file"></span></a>
+        <a class="pull-right btn btn-primary btn-xs" title="Vezi fișiere" data-nodrag ng-click="fs.goToFolder(file.id)" style="margin-right: 8px;"><span class="fa fa-file"></span></a>
     </div>
     <ol ui-tree-nodes="" ng-model="file.children" ng-class="{hidden: collapsed}">
         <li ng-repeat="file in file.children" ui-tree-node ng-include="'nodes_renderer.html'">

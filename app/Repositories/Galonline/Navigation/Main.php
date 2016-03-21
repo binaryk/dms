@@ -54,7 +54,7 @@ class Main
 	            ->class(\Request::is('file-structure') ? 'active' : '')
 	            ->url(\URL::route('file_structure.index') )
 	            ->icon('')
-	            ->caption( trans('sidebar.doc_type') )
+	            ->caption( trans('sidebar.folder_structure') )
 	            ->show(true)
 	        )
 	    );
