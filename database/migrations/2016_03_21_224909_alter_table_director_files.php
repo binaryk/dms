@@ -12,10 +12,10 @@ class AlterTableDirectorFiles extends Migration
      */
     public function up()
     {
-        Schema::table('director_files',function(Blueprint $t){
+        Schema::table('files',function(Blueprint $t){
             $t->string('location');
         });
-        Schema::table('files_structure',function(Blueprint $t){
+        Schema::table('directors',function(Blueprint $t){
             $t->string('location');
         });
     }
@@ -27,10 +27,10 @@ class AlterTableDirectorFiles extends Migration
      */
     public function down()
     {
-        Schema::table('director_files',function(Blueprint $t){
+        Schema::table('files',function(Blueprint $t){
             $t->dropColumn(['location']);
         });
-        Schema::table('files_structure',function(Blueprint $t){
+        Schema::table('directors',function(Blueprint $t){
             $t->dropColumn(['location']);
         });
     }

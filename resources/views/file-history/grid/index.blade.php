@@ -6,12 +6,19 @@
 		<link rel="stylesheet" href="{!! asset('custom/css/file-icons.css') !!}">
 @stop
 
+@section('heading')
+@parent
+	<div class="btn-group pull-right">
+		<a type="button" class="btn btn-success btn-sm" href="{!! $back !!}">Înapoi</a>
+	</div>
+@stop
+
 @section('custom-javascript-files')
 	@parent
 	<!-- includ js-ul pentru datatable creat dinamic -->
 	{!! 
 	App\Comptechsoft\Ui\Html\Scripts::make([
-		'custom/js/director-files/grid',
+		'custom/js/file-history/grid',
 		'custom/js/director-files/index',
 		'custom/js/director-files/file',
 	])->render()
@@ -20,7 +27,7 @@
 
 @section('jquery-document-ready')
 	@parent
-	var grid  = new gridDirectorFiles();
+	var grid  = new gridFileHistory();
 	var index = new indexGrid({
 		grid       : grid,
 		toolbar    : '{!! $toolbar !!}',

@@ -1,0 +1,1 @@
+<a href="{!! $location !!}" target="_blank">{!! $name !!}</a>

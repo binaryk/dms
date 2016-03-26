@@ -45,13 +45,13 @@ class Main
 	        \App\Repositories\Ui\Navigation\Dropdown::make()
 	        ->id('file-structure')
 	        ->icon('icon fa fa-folder')
-	        ->active(\Request::is('file-structure*') ? 'active' : '')
+	        ->active((\Request::is('file-structure*') || \Request::is('director-files*') )  ? 'active' : '')
 	        ->caption( trans('sidebar.file_struct') )
             ->count('1')
             /*Structura de documente/foldere*/
 	        ->addOption('structura_individuala',
 	            \App\Repositories\Ui\Navigation\Option::make()
-	            ->class(\Request::is('file-structure') ? 'active' : '')
+	            ->class(( \Request::is('file-structure') || \Request::is('director-files*')) ? 'active' : '')
 	            ->url(\URL::route('file_structure.index') )
 	            ->icon('')
 	            ->caption( trans('sidebar.folder_structure') )

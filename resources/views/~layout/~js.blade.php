@@ -18,10 +18,13 @@
 {!! HTML::script('angel/vendor/screenfull/dist/screenfull.js') !!}
 <!-- LOCALIZE-->
 {!! HTML::script('angel/vendor/jquery-localize-i18n/dist/jquery.localize.js') !!}
-<!-- RTL demo-->
+{!! HTML::script('angel/vendor/sweetalert/dist/sweetalert.min.js') !!}
+
+        <!-- RTL demo-->
 {!! HTML::script('angel/js/demo/demo-rtl.js') !!}
 {!! HTML::script('angel/js/app.js') !!}
-
+{!! HTML::script('custom/js/Spinner.js') !!}
+{!! HTML::script('custom/js/Afirm.js') !!}
 
 {!! HTML::script('vendor/select2/js/select2.full.min.js') !!}
 {!! HTML::script('vendor/select2/js/i18n/ro.js') !!}
@@ -44,6 +47,10 @@
 
 
 {!! HTML::script('custom/angular/main.js') !!}
+
+<script>
+    var Spinner = new App.Spinner('#spinner')
+</script>
 <script>
     var token = $('meta[name="csrf_token"]').attr('content');
     $.ajaxSetup({

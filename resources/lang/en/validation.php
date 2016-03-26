@@ -145,13 +145,13 @@ return [
         ],
 
         'frontend' => [
-            'email' => 'E-mail Address',
-            'name' => 'Name',
-            'password' => 'Password',
-            'password_confirmation' => 'Password Confirmation',
-            'old_password' => 'Old Password',
-            'new_password' => 'New Password',
-            'new_password_confirmation' => 'New Password Confirmation',
+            'email' => 'Adresa de E-mail',
+            'name' => 'Nume',
+            'password' => 'Parola',
+            'password_confirmation' => 'Confirmare parola',
+            'old_password' => 'Parola veche',
+            'new_password' => 'Parola noua',
+            'new_password_confirmation' => 'Parola noua confirmare',
         ],
     ],
 

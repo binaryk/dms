@@ -15,10 +15,10 @@
 		pageLength   : 10,
 		dom          : '<"row"<"col-xs-12"lp<"comptech-soft-toolbar pull-right">>><"row"<"col-sm-12 galonline-datatable-container"t>>',
 		ajax         : {
-			url  : 'http://localhost/dms/be/public/director-files-source/65/gridDirectorFiles',
+			url  : 'http://localhost/dms/be/public/director-files-source/4/gridDirectorFiles',
 			type : 'post',
 			data : {
-				_token : 'HAlSd7Dk3A9UwSWMGhqvuq2vHPbg1qUb8h7ux29E'
+				_token : 'ZzXo6jmcvlVY7I7qvPDvZ5HXYVqUNoBK593YA7fs'
 			}
 		},
 		order        : [1, 'asc'],

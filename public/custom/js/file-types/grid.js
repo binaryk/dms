@@ -18,7 +18,7 @@
 			url  : 'http://localhost/dms/be/public/superadmin/nomenclatoare/file-types-source',
 			type : 'post',
 			data : {
-				_token : 'NTmPN27ETwpjOFDl5Ov1WyawvxMIurhsaJ8wOA0i'
+				_token : 'kKwP99uVg4uAKvdEzw13kxMajS3YXcn532ITmZoP'
 			}
 		},
 		order        : [1, 'asc'],

@@ -51,7 +51,7 @@ class Rows
 	{
 		if( ! array_key_exists($property, $this->parameters) )
 		{
-			throw new \Exception(__CLASS__ . ': Nu avem proprietatea $property in parameters', 1);
+			throw new \Exception(__CLASS__ . ': Nu avem proprietatea '. $property .' in parameters', 1);
 		}
 		return $this->parameters[$property];
 	}

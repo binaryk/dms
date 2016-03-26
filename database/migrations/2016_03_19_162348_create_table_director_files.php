@@ -12,7 +12,7 @@ class CreateTableDirectorFiles extends Migration
      */
     public function up()
     {
-        Schema::create('director_files', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('name', 128);
             $table->string('description', 128);
@@ -34,6 +34,6 @@ class CreateTableDirectorFiles extends Migration
      */
     public function down()
     {
-        Schema::drop('director_files');
+        Schema::drop('files');
     }
 }

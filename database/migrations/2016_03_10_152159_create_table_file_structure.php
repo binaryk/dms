@@ -12,7 +12,7 @@ class CreateTableFileStructure extends Migration
      */
     public function up()
     {
-        Schema::create('files_structure', function(Blueprint $t){
+        Schema::create('directors', function(Blueprint $t){
             $t->increments('id');
 
             $t->integer('parent_id')->nullable();
@@ -36,6 +36,6 @@ class CreateTableFileStructure extends Migration
      */
     public function down()
     {
-        Schema::drop('files_structure');
+        Schema::drop('directors');
     }
 }

@@ -56,6 +56,7 @@ class Form
         $this->id     = $id;
         $this->action = $action;
         $this->grid_id = $grid_id;
+
     }
 
     public function __call( $method, $arguments)

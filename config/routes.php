@@ -5,8 +5,8 @@ return [
 	'files' => [
 
 		'session/session.php',
-		'files/file-structure.php',
-		'files/director-files.php',
+		'files/director-structure.php',
+		'files/files.php',
 		'files/file-history.php',
 
 		'nomenclator/file-types.php',

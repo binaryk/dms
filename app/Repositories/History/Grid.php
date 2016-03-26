@@ -16,12 +16,12 @@ class Grid extends \App\Comptechsoft\Datatable\Grid
 		/*
 		 * II asociez ID la grid
 		 */
-		$this->id('gridDirectorFiles');
+		$this->id('gridFileHistory');
 
 		/*
 		 * In ce fisier sa se genereze js-ul pentru .DataTable({...});
 		 */
-		$this->js( str_replace('\\', '/', public_path('custom/js/director-files/grid.js') ));
+		$this->js( str_replace('\\', '/', public_path('custom/js/file-history/grid.js') ));
 		/*
 		 * Care coloana contine ordinea initiala
 		 */
@@ -54,7 +54,7 @@ class Grid extends \App\Comptechsoft\Datatable\Grid
 				->withHeader( 
 					(new Header())
 					->with(['caption' => 'Denumire', 'width' => 30])
-					->withFilter( (new Filter())->view('director-files.grid.filters.categorie') )
+					->withFilter( (new Filter())->view('file-history.grid.filters.categorie') )
 				)->orderable(),
 
 			'description' =>
@@ -107,7 +107,9 @@ class Grid extends \App\Comptechsoft\Datatable\Grid
 		/*
 		 * De la ce ruta vine raspunsul cu randuri
 		 */
-		$this->ajax( (new Ajax())->setUrl(\URL::route('director-files.data-source',['id' => $this->getParameter('dir_id'),'grid_id' => $this->id]))->setExtra(['a' => 1, 'b' => 2]) );
+		$this->ajax( (new Ajax())->setUrl(\URL::route('file-history.data-source',
+			['parent_file_id' => $this->getParameter('parent_file_id'),'grid_id' => $this->id]))
+			->setExtra(['a' => 1, 'b' => 2]) );
 		return $this;
 	}
 }

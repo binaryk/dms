@@ -194,6 +194,7 @@ return [
          */
         App\Providers\MacroServiceProvider::class,
         'Baum\Providers\BaumServiceProvider',
+        'Chumper\Zipper\ZipperServiceProvider'
     ],
 
     /*
@@ -250,6 +251,7 @@ return [
         'Gravatar'    => Creativeorange\Gravatar\Facades\Gravatar::class,
         'Html'        => Collective\Html\HtmlFacade::class,
         'Socialite'   => Laravel\Socialite\Facades\Socialite::class,
+        'Zipper' => 'Chumper\Zipper\Zipper'
     ],
 
 ];

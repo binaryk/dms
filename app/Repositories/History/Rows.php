@@ -1,7 +1,7 @@
 <?php namespace App\Repositories\History;
 
 use App\Models\Access\User\User;
-use \App\Models\DirectorFiles;
+use \App\Models\FileHistory;
 use \App\Comptechsoft\Datatable\Cell;
 
 class Rows extends \App\Comptechsoft\Datatable\Rows
@@ -20,7 +20,7 @@ class Rows extends \App\Comptechsoft\Datatable\Rows
 		$this->addCells([
 			'rec-no'     	=> (new Cell())->source(function($record){ return $record->properties->recCount . '.'; }),
 			'id'         	=> (new Cell())->source(function($record){ return $record->id; }),
-			'name'      	=> (new Cell())->source(function($record){ return $record->name; }),
+			'name'      	=> (new Cell())->source(function($record){ return view('file-history.grid.columns.name')->withName($record->name)->withLocation($record->location)->render(); }),
 			'description'   => (new Cell())->source(function($record){ return $record->description; }),
 			'version'       => (new Cell())->source(function($record){ return $record->version; }),
 			'author'      	=> (new Cell())->source(function($record){ return @User::find($record->author)->name; }),
@@ -31,12 +31,21 @@ class Rows extends \App\Comptechsoft\Datatable\Rows
 				return
 					view('__layouts.pages.datatable.cells.actions')
 						->withRecord($record)
-						->withUpdateRoute(\URL::route('director-files.get-action-form',
-							['action' => 'update', 'id' => $record->id,'grid_id' => $this->getParameter('grid_id'),
-							'dir_id' => $this->getParameter('dir_id')]))
-						->withDeleteRoute(\URL::route('director-files.get-action-form',
-							['action' => 'delete', 'id' => $record->id, 'grid_id' => $this->getParameter('grid_id'),
-							 'dir_id' => $this->getParameter('dir_id'),
+						//file-history-get-action-form/{parent_file_id}/{action}/{grid_id}/{id?}
+						->withUpdateRoute(null)
+						/*\URL::route('file-history.get-action-form',
+							[
+								'parent_file_id' => $this->getParameter('parent_file_id'),
+								'action' => 'update',
+								'grid_id' => $this->getParameter('grid_id'),
+								'id' => $record->id
+							])*/
+						->withDeleteRoute(\URL::route('file-history.get-action-form',
+							[
+								'parent_file_id' => $this->getParameter('parent_file_id'),
+								'action' => 'delete',
+								'grid_id' => $this->getParameter('grid_id'),
+								'id' => $record->id
 							]))
 						->render();
 			}),
@@ -46,11 +55,11 @@ class Rows extends \App\Comptechsoft\Datatable\Rows
 	}
 
 	/*
-	 * Toate inregistrarile din tabela ferme 
+	 * Toate inregistrarile din tabela
 	 */
 	protected function totalRecordsCount()
 	{
-		return DirectorFiles::count();
+		return FileHistory::count();
 	}
 
 	/*
@@ -64,9 +73,9 @@ class Rows extends \App\Comptechsoft\Datatable\Rows
 		$where = $this->where();
 		if( ! $where )
 		{
-			return DirectorFiles::count();
+			return FileHistory::count();
 		}
-		return DirectorFiles::whereRaw($where)->count();
+		return FileHistory::whereRaw($where)->count();
 	}
 
 	/*
@@ -78,9 +87,7 @@ class Rows extends \App\Comptechsoft\Datatable\Rows
 		 * OrderBy
 		 */
 		$order_criteria = $this->orderBy();
-		$result = 
-			DirectorFiles::where('director', $this->getParameter('dir_id'))->orderBy( $order_criteria['field'], $order_criteria['direction'] )
-			;
+		$result =  FileHistory::where('file_id', $this->getParameter('parent_file_id'))->orderBy( 'id', 'desc' );
 		/*
 		 * WhereRaw
 		 */

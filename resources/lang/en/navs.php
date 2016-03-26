@@ -18,7 +18,7 @@ return [
     ],
 
     'general' => [
-        'logout' => 'Logout',
+        'logout' => 'Iesire',
     ],
 
     'frontend' => [

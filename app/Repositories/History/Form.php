@@ -1,6 +1,6 @@
 <?php namespace App\Repositories\History;
 
-use App\Models\DirectorFiles;
+use App\Models\FileHistory;
 
 class Form extends \App\Comptechsoft\Form\Form
 {
@@ -19,7 +19,7 @@ class Form extends \App\Comptechsoft\Form\Form
 
 	    if( $id )
 	    {
-			$this->record(DirectorFiles::find( (int) $id ));
+			$this->record(FileHistory::find( (int) $id ));
 			if($action === 'update' || $action === 'delete'){
 				if(file_exists($this->record->path)){
 

@@ -23,6 +23,7 @@ class CreateTableFileHistory extends Migration
             $table->text('path');
             $table->string('extention',20);
             $table->float('storage');
+            $table->string('location');
             $table->timestamps();
             $table->softDeletes();
         });

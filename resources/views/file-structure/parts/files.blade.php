@@ -14,7 +14,7 @@
         </li>
     </ol>
 </script>
-<div class="col-sm-6">
+<div class="col-sm-12">
     <div ui-tree id="tree-root">
         <ol ui-tree-nodes ng-model="fs.files">
             <li ng-repeat="file in fs.files track by $index" ui-tree-node ng-include="'nodes_renderer.html'"></li>

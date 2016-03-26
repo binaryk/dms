@@ -7,10 +7,10 @@
 		@if($icon)
 			{!! $icon !!}
 		@endif
-		@if($caption)
+		@if( isset($caption) && $caption)
 			{!! $caption !!}
+			(<span id="record-count-{{$grid->getId()}}"></span>)
 		@endif
-		(<span id="record-count-{{$grid->getId()}}"></span>)
 	</span>
 		<div class="description">{!! $description !!}</div>
 	</div>

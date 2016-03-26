@@ -17,7 +17,12 @@
     <!-- =============== PAGE VENDOR STYLES ===============-->
     <!-- =============== BOOTSTRAP STYLES ===============-->
     {!! Html::style('angel/css/bootstrap.css')!!}
-    <!-- =============== APP STYLES ===============-->
+            <!-- =============== APP STYLES ===============-->
+    {!! Html::style( 'angel/vendor/sweetalert/dist/sweetalert.css' ) !!}
+    {!! Html::style( 'angel/vendor/loaders.css/loaders.css' ) !!}
+    {!! Html::style( 'angel/vendor/spinkit/css/spinkit.css' ) !!}
+
+
     {!! Html::style('angel/css/app.css')!!}
     @yield('my-styles')
 
@@ -25,9 +30,23 @@
     {!! Html::style( 'site/css/modal.comptech.css' ) !!}
     {!! Html::style( 'site/themes/css/flat-blue.css' ) !!}
     {!! Html::style( 'custom/css/ui.css' ) !!}
+
+
     <style>
         .ng-cloak{
             display: none !important;
+        }
+        .loader-spinner{
+            position: fixed;
+            z-index: 999;
+            height: 2em;
+            width: 2em;
+            overflow: visible;
+            margin: auto;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
         }
     </style>
     @yield('css')
