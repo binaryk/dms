@@ -2,6 +2,8 @@ import angular from "angular";
 import contextMenu from "angular-bootstrap-contextmenu";
 import ui_bootstrap from "angular-ui-bootstrap";
 import ui_tree from 'angular-ui-tree';
+import * as ld from 'lodash';
+
 
 var dms = angular.module('dms', ['dms.controllers','dms.directives','dms.services', 'ui.bootstrap.contextMenu','ui.bootstrap','ui.tree'])
     .constant('treeConfig', {
@@ -17,9 +19,13 @@ var dms = angular.module('dms', ['dms.controllers','dms.directives','dms.service
         levelThreshold: 30,
         defaultCollapsed: false
     })
-    .config(function($interpolateProvider) {
+    .config(function($interpolateProvider, $locationProvider) {
         $interpolateProvider.startSymbol('[[');
         $interpolateProvider.endSymbol(']]');
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        });
     })
     .run(function($rootScope){
         $rootScope.config = _config;

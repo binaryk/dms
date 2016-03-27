@@ -21,6 +21,12 @@ var _angularUiTree = require("angular-ui-tree");
 
 var _angularUiTree2 = _interopRequireDefault(_angularUiTree);
 
+var _lodash = require("lodash");
+
+var ld = _interopRequireWildcard(_lodash);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var dms = _angular2.default.module('dms', ['dms.controllers', 'dms.directives', 'dms.services', 'ui.bootstrap.contextMenu', 'ui.bootstrap', 'ui.tree']).constant('treeConfig', {
@@ -35,9 +41,13 @@ var dms = _angular2.default.module('dms', ['dms.controllers', 'dms.directives', 
     dragThreshold: 3,
     levelThreshold: 30,
     defaultCollapsed: false
-}).config(function ($interpolateProvider) {
+}).config(function ($interpolateProvider, $locationProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
 }).run(function ($rootScope) {
     $rootScope.config = _config;
 });
@@ -223,6 +233,41 @@ controllers.directive('nestedItem', ['$compile', function ($compile) {
 
 'use strict';
 
+var PostsCtrl = function PostsCtrl($scope, PostsService, $compile, $location) {
+    var _this = this;
+
+    var _that = this;
+    this.posts = [];
+    this.query = {};
+
+    this.query = $location.search();
+    this.init = function () {};
+
+    this.init();
+
+    this.onGet = function (data) {
+        _that.posts = data.records.record;
+        if (_this.query.start && _this.query.stop) {
+            _that.posts = data.records.record.slice(_that.query.start, _that.query.stop);
+        }
+        if (_this.query.count) {
+            _that.posts = _.take(data.records.record, _this.query.count);
+        }
+        if (_this.query.find) {
+            _that.posts = [data.records.record[_this.query.find]];
+        }
+        console.log(_that.posts);
+        //_that.posts = data.records.record;
+        //console.log(_that.posts);
+    };
+    PostsService.get(_that.onGet);
+};
+
+PostsCtrl.$inject = ['$scope', 'PostsService', '$compile', '$location'];
+controllers.controller('PostsCtrl', PostsCtrl);
+
+'use strict';
+
 var services = _angular2.default.module('dms.services', []);
 'use strict';
 services.factory('FileStructureService', ['$rootScope', '$http', function ($rootScope, $http) {
@@ -289,6 +334,26 @@ services.factory('FileStructureService', ['$rootScope', '$http', function ($root
          return todos;
      }*/
 
+    return mixin;
+}]);
+'use strict';
+services.factory('PostsService', ['$rootScope', '$http', function ($rootScope, $http) {
+    var mixin = {};
+
+    mixin.get = function (callback) {
+        $http.get('custom/data/posts.xml', { transformResponse: function transformResponse(data) {
+                // convert the data to JSON and provide
+                // it to the success function below
+                var x2js = new X2JS();
+                var json = x2js.xml_str2json(data);
+                return json;
+            }
+        }).success(function (data, status) {
+            // send the converted data back
+            // to the callback function
+            callback(data);
+        });
+    };
     return mixin;
 }]);
 'use strict';

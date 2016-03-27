@@ -1,22 +1,26 @@
 <?php
+Route::group(['middleware' => 'auth'], function() {
+    Route::group(['namespace' => 'Search'], function () {
 
-Route::group(['namespace' => 'Search'], function () {
+        Route::get('search', 'SearchController@getGrid')
+            ->name('search.index');
 
-    Route::get('search', 'SearchController@getGrid')
-        ->name('search.index');
+        Route::post('search-source', 'SearchController@dataSource')
+            ->name('search.data-source');
 
-    Route::post('search-source', 'SearchController@dataSource')
-        ->name('search.data-source');
+        /*
+         * Sa se incarce formularul de actiun (actions form)
+         */
+        Route::post('search-get-action-form/{action}/{id?}', 'SearchController@getActionForm')
+            ->name('search.get-action-form');
 
-    /*
-     * Sa se incarce formularul de actiun (actions form)
-     */
-    Route::post('search-get-action-form/{action}/{id?}', 'SearchController@getActionForm')
-        ->name('search.get-action-form');
+        /*
+         * ce se intampla la Adauga/Salveaza/Sterge
+         */
+        Route::post('search-action/{action}/{id?}', 'SearchController@doAction')
+            ->name('search-do-action');
 
-    /*
-     * ce se intampla la Adauga/Salveaza/Sterge
-     */
-    Route::post('search-action/{action}/{id?}', 'SearchController@doAction')
-        ->name('search-do-action');
+        Route::post('search-send/{id}', 'SearchController@sendEmail')
+            ->name('search.send_file');
+    });
 });

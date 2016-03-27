@@ -63,4 +63,9 @@ class SearchController extends BaseController
         return \Response::json($action->commit());
     }
 
+    public function sendEmail($id)
+    {
+        dd($id);
+    }
+
 }

@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Bootstrap Admin App + jQuery">
     <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
-    <title>Document management system</title>
+    <title>@if(env('APP_ENV') === 'local' || env('APP_ENV') === 'production')Document management system @endif @if(env('APP_ENV')==='daw') Articles @endif</title>
     <meta name="csrf_token" content="{!! csrf_token() !!}"/>
     <!-- =============== VENDOR STYLES ===============-->
     <!-- FONT AWESOME-->

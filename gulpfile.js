@@ -7,6 +7,7 @@ var controllers = [
     'angular/controllers/controllers.js',
     'angular/controllers/MainCtrl.js',
     'angular/controllers/FileStructureCtrl.js',
+    'angular/controllers/Daw/PostsCtrl.js',
 ];
 
 var directives = [
@@ -16,7 +17,8 @@ var directives = [
 
 var services = [
     'angular/services/services.js',
-    'angular/services/FileStructureService.js'
+    'angular/services/FileStructureService.js',
+    'angular/services/Daw/PostsService.js',
 ];
 
 var config = [

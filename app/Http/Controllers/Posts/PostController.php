@@ -13,7 +13,7 @@ class PostController extends BaseController
     {
         $this->makeNavigation();
         return view('posts.index')
-            ->with( $this->data('Posturi') );
+            ->with( $this->data(trans('sidebar.posts')) );
     }
 
 }

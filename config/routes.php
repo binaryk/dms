@@ -15,6 +15,7 @@ return [
 		'nomenclator/categories.php',
 
 		'posts/posts.php',
+		'daw/contact.php',
 
 		'ps/ass1.php'
 

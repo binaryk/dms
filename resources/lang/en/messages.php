@@ -2,7 +2,9 @@
 
 return [
     'welcome' => [
-        'guest' => 'Bine ati venit, va rugam sa va logati pentru a beneficia de platforma.',
-        'auth' => 'Bine ati venit.',
+        'guest' => 'Welcome to platform, please login in your account.',
+        'auth' => 'Welcome.',
+        'contact' => 'Contact us',
+        'contact_men' => 'Contact us',
     ],
 ];

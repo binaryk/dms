@@ -7,9 +7,14 @@
 	App\Comptechsoft\Ui\Html\Scripts::make([
 		'custom/js/search/grid',
 		'custom/js/grids/index',
-		'custom/js/director-files/file',
+		'custom/js/search/file',
+		'custom/js/binaryk/ui/Modal'
 	])->render() 
 	!!}
+@stop
+
+@section('content')
+    @parent
 @stop
 
 @section('jquery-document-ready')

@@ -29,6 +29,10 @@ class Rows extends \App\Comptechsoft\Datatable\Rows
 							[
 								'id' => $record->id,
 							]))
+						->withEmailRoute(\URL::route('search.send_file',
+							[
+								'id' => $record->id,
+							]))
 						->render();
 			}),
 		]);
