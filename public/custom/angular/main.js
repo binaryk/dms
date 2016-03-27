@@ -284,27 +284,56 @@
 	
 	    var _that = this;
 	    this.posts = [];
+	    this.data = [];
 	    this.query = {};
 	
 	    this.query = $location.search();
-	    this.init = function () {};
 	
-	    this.init();
+	    $scope.$watch('$location.search()', function (newV, old) {
+	        console.log(newV);
+	    });
+	
+	    this.init = function () {
+	        $scope.$watch(function () {
+	            return $location.search();
+	        }, function () {
+	            console.log('change', _that.data);
+	            _that.query = $location.search();
+	            _that.filters(_that.data);
+	        });
+	    };
+	
+	    setTimeout(_that.init(), 1000);
+	
+	    this.filters = function (data) {
+	        console.log('filter', _that.posts, data);
+	        if (_this.query.start && _this.query.stop) {
+	            _that.posts = data.slice(_that.query.start, _that.query.stop);
+	        } else {
+	            _this.query.start = null;
+	            _this.query.stop = null;
+	            if (_this.query.count) {
+	                _that.posts = _.take(data, _this.query.count);
+	            } else {
+	                _this.query.count = null;
+	                if (_this.query.find) {
+	                    _that.posts = [data[_this.query.find]];
+	                } else {
+	                    _that.posts = data;
+	                }
+	            }
+	        }
+	
+	        console.log('after filter', _that.posts);
+	    };
 	
 	    this.onGet = function (data) {
+	        console.log('OnGetData', data);
+	
 	        _that.posts = data.records.record;
-	        if (_this.query.start && _this.query.stop) {
-	            _that.posts = data.records.record.slice(_that.query.start, _that.query.stop);
-	        }
-	        if (_this.query.count) {
-	            _that.posts = _.take(data.records.record, _this.query.count);
-	        }
-	        if (_this.query.find) {
-	            _that.posts = [data.records.record[_this.query.find]];
-	        }
-	        console.log(_that.posts);
-	        //_that.posts = data.records.record;
-	        //console.log(_that.posts);
+	        _that.data = data.records.record;
+	        _that.filters(_that.data);
+	        console.log('_that.posts', _that.posts);
 	    };
 	    PostsService.get(_that.onGet);
 	};

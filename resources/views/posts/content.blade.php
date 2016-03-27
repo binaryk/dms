@@ -33,6 +33,20 @@
 
 <div class="col-md-3">
     <div class="panel panel-default">
+        <div class="panel-heading">Clear</div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="input-group">
+                      <span class="input-group-btn">
+                         <a href="{!! route('posts.index') !!}" class="btn btn-default">
+                             <em class="fa fa-search"></em>
+                         </a>
+                      </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default">
         <div class="panel-heading">Search</div>
         <div class="panel-body">
             <form class="form-horizontal">
@@ -42,6 +56,52 @@
                          <button type="button" class="btn btn-default">
                              <em class="fa fa-search"></em>
                          </button>
+                      </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Range</div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="input-group">
+                    <input type="text" placeholder="Start" class="form-control" ng-model="ps.start">
+                    <input type="text" placeholder="Stop" class="form-control" ng-model="ps.stop">
+                      <span class="input-group-btn">
+                         <a href="{!! route('posts.index') !!}?start=[[ps.start]]&stop=[[ps.stop]]" class="btn btn-default">
+                             <em class="fa fa-search"></em>
+                         </a>
+                      </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Element</div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="input-group">
+                    <input type="text" placeholder="Find" class="form-control" ng-model="ps.find">
+                      <span class="input-group-btn">
+                         <a href="{!! route('posts.index') !!}?find=[[ps.find]]" class="btn btn-default">
+                             <em class="fa fa-search"></em>
+                         </a>
+                      </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Count</div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="input-group">
+                    <input type="text" placeholder="Count" class="form-control" ng-model="ps.count">
+                      <span class="input-group-btn">
+                         <a href="{!! route('posts.index') !!}?count=[[ps.count]]" class="btn btn-default">
+                             <em class="fa fa-search"></em>
+                         </a>
                       </span>
                 </div>
             </form>
