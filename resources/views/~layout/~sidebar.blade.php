@@ -1,3 +1,3 @@
-@if($navigation)
+@if(isset($navigation))
     {!! $navigation->render() !!}
 @endif

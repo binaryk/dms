@@ -3,9 +3,7 @@
     $.extend( this, options);
 
     this.grid_width = 12 - this.form_width;
-
-
-
+    console.log('width',this.form_width);
     var _this = this;
 
     this.init = function(){

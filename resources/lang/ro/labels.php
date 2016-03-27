@@ -17,15 +17,15 @@ return [
         'all' => 'All',
         'yes' => 'Yes',
         'no' => 'No',
-        'custom' => 'Custom',
-        'actions' => 'Actions',
+        'custom' => 'Personalizat',
+        'actions' => 'Acțiuni',
         'buttons' => [
-            'save' => 'Save',
-            'update' => 'Update',
+            'save' => 'Salvează',
+            'update' => 'Actualizează',
         ],
-        'hide' => 'Hide',
+        'hide' => 'Ascunde',
         'none' => 'None',
-        'show' => 'Show',
+        'show' => 'Arată',
         'toggle_navigation' => 'Toggle Navigation',
     ],
 
@@ -126,19 +126,19 @@ return [
     'frontend' => [
 
         'auth' => [
-            'login_box_title' => 'Login',
-            'login_button' => 'Login',
-            'login_with' => 'Login with :social_media',
-            'register_box_title' => 'Register',
-            'register_button' => 'Register',
-            'remember_me' => 'Remember Me',
+            'login_box_title' => 'Logare',
+            'login_button' => 'Logare',
+            'login_with' => 'Logare with :social_media',
+            'register_box_title' => 'Înregistrare',
+            'register_button' => 'Înregistrare',
+            'remember_me' => 'Reține-mă',
         ],
 
         'passwords' => [
-            'forgot_password' => 'Forgot Your Password?',
-            'reset_password_box_title' => 'Reset Password',
-            'reset_password_button' => 'Reset Password',
-            'send_password_reset_link_button' => 'Send Password Reset Link',
+            'forgot_password' => 'Ați uitat parola ?',
+            'reset_password_box_title' => 'Resetează parola',
+            'reset_password_button' => 'Resetează parola',
+            'send_password_reset_link_button' => 'Trimite email cu resetare parola',
         ],
 
         'macros' => [
@@ -169,17 +169,17 @@ return [
 
         'user' => [
             'passwords' => [
-                'change' => 'Change Password',
+                'change' => 'Schimbă parola',
             ],
 
             'profile' => [
-                'avatar' => 'Avatar',
-                'created_at' => 'Created At',
-                'edit_information' => 'Edit Information',
+                'avatar' => 'Imagine de profil',
+                'created_at' => 'Creat',
+                'edit_information' => 'Editează',
                 'email' => 'E-mail',
-                'last_updated' => 'Last Updated',
-                'name' => 'Name',
-                'update_information' => 'Update Information',
+                'last_updated' => 'Ultima actualizare',
+                'name' => 'Nume',
+                'update_information' => 'Actualizează informațiile',
             ],
         ],
 

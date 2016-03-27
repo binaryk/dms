@@ -22,16 +22,16 @@ return [
     ],
 
     'frontend' => [
-        'dashboard' => 'Dashboard',
-        'home' => 'Home',
+        'dashboard' => 'Acasă',
+        'home' => 'Acasă',
         'login' => 'Login',
         'macros' => 'Macros',
-        'register' => 'Register',
+        'register' => 'Înregistrare',
 
         'user' => [
-            'administration' => 'Administration',
-            'change_password' => 'Change Password',
-            'my_information' => 'My Information',
+            'administration' => 'Administrare',
+            'change_password' => 'Schimbă parola',
+            'my_information' => 'Informații despre mine',
         ],
     ],
 ];

@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('~layout.~template')
 
 @section('content')
 
@@ -40,8 +40,8 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 {!! Form::submit(trans('labels.frontend.auth.login_button'), ['class' => 'btn btn-primary', 'style' => 'margin-right:15px']) !!}
-
                                 {!! link_to('password/reset', trans('labels.frontend.passwords.forgot_password')) !!}
+                                <a href="{!! route('auth.register') !!}" class="btn btn-default">Înregistrare</a>
                             </div><!--col-md-6-->
                         </div><!--form-group-->
 

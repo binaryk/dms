@@ -2,7 +2,7 @@
 <li class="dropdown dropdown-list">
     <a href="#" data-toggle="dropdown">
         <em class="icon-bell"></em>
-        <div class="label label-danger">{{ $notifications_count = count($notifications) }}</div>
+        <div class="label label-danger">{{ $notifications_count = count($notifications = []) }}</div>
     </a>
     <!-- START Dropdown menu-->
     <ul class="dropdown-menu animated flipInX">

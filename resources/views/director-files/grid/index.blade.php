@@ -20,10 +20,11 @@
 		'custom/js/director-files/grid',
 		'custom/js/director-files/index',
 		'custom/js/director-files/file',
+		'angel/vendor/bootstrap-wysiwyg/bootstrap-wysiwyg',
+		'angel/vendor/bootstrap-wysiwyg/external/jquery.hotkeys'
 	])->render()
 	!!}
 @stop
-
 @section('jquery-document-ready')
 	@parent
 	var grid  = new gridDirectorFiles();
@@ -31,11 +32,12 @@
 		grid       : grid,
 		toolbar    : '{!! $toolbar !!}',
 		_token     : '{{ csrf_token() }}',
-		form_width : 4
+		form_width : 12
 	}).init();
 	console.log(index);
 	index.afterShowform = function(impact){
 		(new App.File(impact)).init();
+        $('.wysiwyg').wysiwyg();
 	}
 	new App.Handler();
 @stop

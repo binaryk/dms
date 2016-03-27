@@ -43,19 +43,19 @@
         ->render()
     !!}
 	</div>
-
+    @include('director-files.form.wysiwig')
 	<div class="col-xs-12">
 		{!!
         App\Repositories\Ui\Controls\Editbox::make()
         ->name( $field = 'description')
         ->class('form-group')
-        ->caption( 'Descriere fișier' )
+        ->caption( 'Comentarii fișier' )
         ->placeholder('ex. jpg, png')
         ->icon(NULL)
         ->value( $action != 'insert' ? $record->{$field} : '')
         ->attributes([
             'id'          => $field,
-            'class'       => 'form-control form-data-source',
+            'class'       => 'form-control form-data-source  note-editor note-editor-margin',
             'placeholder' => 'Acest fișier include...',
             'data-field'  => $field,
             'data-type'   => 'textbox'
@@ -65,7 +65,6 @@
         ->render()
     !!}
 	</div>
-
     <div class="ui-58 hidden" id="image-old-box">
         <div class="col-xs-12">
             {!! $data['file'] !!}

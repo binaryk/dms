@@ -1,3 +1,7 @@
 {
-  "custom/angular/app.js": "custom/angular/app-03aec22cee.js"
+  "custom/angular/app.js": "custom/angular/app-03aec22cee.js",
+  "css/backend.css": "css/backend-35cd3beb52.css",
+  "css/frontend.css": "css/frontend-a0334bbab1.css",
+  "js/backend.js": "js/backend-864b9e7e0b.js",
+  "js/frontend.js": "js/frontend-c7c13382c8.js"
 }

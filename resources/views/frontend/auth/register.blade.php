@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('~layout.~template')
 
 @section('content')
     <div class="row">
@@ -43,6 +43,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 {!! Form::submit(trans('labels.frontend.auth.register_button'), ['class' => 'btn btn-primary']) !!}
+                                <a href="{!! route('auth.login') !!}" class="btn btn-default">Logare</a>
                             </div><!--col-md-6-->
                         </div><!--form-group-->
 

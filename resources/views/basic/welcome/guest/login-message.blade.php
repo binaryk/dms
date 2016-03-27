@@ -4,7 +4,7 @@
         <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
             <li><a href="{!! route('auth.login') !!}" data-set-lang="es">Logare</a>
             </li>
-            <li><a href="{!! route('auth.register') !!}" data-set-lang="en">Inregistrare</a>
+            <li><a href="{!! route('auth.register') !!}" data-set-lang="en">Înregistrare</a>
             </li>
         </ul>
     </div>

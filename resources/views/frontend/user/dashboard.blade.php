@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('~layout.~template')
 
 @section('content')
     <div class="row">
@@ -50,6 +50,9 @@
                                             @if ($user->canChangePassword())
                                                 <a href="{!! route('auth.password.change') !!}" class="btn btn-warning btn-xs">{{ trans('navs.frontend.user.change_password') }}</a>
                                             @endif
+                                            @role('Administrator')
+                                                <a href="{!! url('admin/dashboard') !!}" class="btn btn-success btn-xs">Administrare</a>
+                                            @endauth
                                         </td>
                                     </tr>
                                 </table>

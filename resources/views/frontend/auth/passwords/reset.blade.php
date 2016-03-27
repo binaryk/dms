@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('~layout.~template')
 
 @section('content')
     <div class="row">
