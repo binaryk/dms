@@ -95,13 +95,17 @@ var FileStructureCtrl = function($scope, FileStructureService,$uibModal, $compil
     }
 
     that.removeItem = function (scope) {
-        scope.remove();
-        FileStructureService.remove(scope.$modelValue.id).then(data => {
-            if(data.code === 200){
-            }else{
-                alert('Erorr');
-            }
-        });
+        var afirm = new App.Afirm();
+        afirm.question('Ștergere director', 'Sunteți sigur că doriți să stergeți acest director ? El (poate) include alte directoare și fișiere','warning');
+        afirm.onConfirm = function(){
+            scope.remove();
+            FileStructureService.remove(scope.$modelValue.id).then(data => {
+                if(data.code === 200){
+                }else{
+                    alert('Erorr');
+                }
+            });
+        }
     };
 
     $scope.toggle = function (scope) {

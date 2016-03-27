@@ -14,7 +14,7 @@ class DirectorStructureController extends BaseController
         $files = $this->userFiles();
         $this->makeNavigation();
         return view('file-structure.index')
-               ->with( $this->data('Strucura de fisiere', 'aici gasiti fisierele dvs') )
+               ->with( $this->data('Strucura de directoare','pentru a crea un director root, click pe "Creeaza director" din dreapta') )
                 ->with(compact('files'))
             ;
     }
@@ -94,11 +94,17 @@ class DirectorStructureController extends BaseController
             $child = Director::find($data);
             $path  = $child->path;
             $dir_deleted = File::deleteDirectory($child->path);
+            $this->deleteAllFiles($data);
             $child->delete();
         }catch(\Exception $e){
             return error($e->getMessage());
         }
         return success(['removed' => 'true', 'path' => $path, 'dir_removed' => $dir_deleted]);
+    }
+
+    public function deleteAllFiles($dir_id)
+    {
+        return \App\Models\File::where('director', $dir_id)->delete();
     }
 
     public function dir($data)

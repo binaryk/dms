@@ -1,4 +1,4 @@
-@if($update_route)
+@if(isset($update_route) && $update_route)
 {!! 
 	App\Repositories\Ui\Controls\Actions\Button::make()
 	->id('btn-update-' . $record->id)
@@ -12,6 +12,7 @@
 	->render() 
 !!}
 @endif
+@if( isset($delete_route) && $delete_route)
 {!! 
 	App\Repositories\Ui\Controls\Actions\Button::make()
 	->id('btn-delete-' . $record->id)
@@ -24,3 +25,4 @@
 	->caption('')
 	->render() 
 !!}
+@endif

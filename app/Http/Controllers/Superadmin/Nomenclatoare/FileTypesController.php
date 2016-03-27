@@ -19,11 +19,10 @@ class FileTypesController extends BaseController
         $this->makeNavigation();
         return
             view('superadmin.nomenclatoare.file-types.grid.index')
-                ->with( $this->data() )
+                ->with( $this->data('Extensii acceptate') )
                 ->withGrid( (new Grid())->parameters( Input::all()) )
                 ->withToolbar( str_replace([Chr(13), Chr(10), Chr(9)], '', view('superadmin.nomenclatoare.file-types.grid.toolbar')->withActionRoute(\URL::route('superadmin.nomenclatoare.file-types.get-action-form', ['action' => 'insert']))->render()) )
                 ->withIcon(NULL)
-                ->withCaption('Categorii fisiere')
                 ->withDescription(NULL)
             ;
     }

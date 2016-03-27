@@ -1,8 +1,10 @@
 <?php namespace App\Http\Controllers\Files;
 
 use \App\Http\Controllers\Basic\BaseController;
+use App\Models\Archive;
 use App\Models\Director;
 use App\Models\File;
+use Illuminate\Support\Facades\File as SFile;
 use App\Models\FileHistory;
 use Chumper\Zipper\Facades\Zipper;
 use Illuminate\Support\Facades\Input;
@@ -107,12 +109,32 @@ class FilesController extends BaseController
 
     public function archive($id)
     {
+        if( ! file_exists($arch_root = config('general.archives') . access()->user()->id ) ){
+            SFile::makeDirectory($arch_root, 0775, true);
+        }
         $file = File::find($id);
-        $dir = Director::find($file->director);
+        $path = public_path($arch_root . '/' . $file->name . '.zip');
         $zipper = new \Chumper\Zipper\Zipper;
-        $compresed = $zipper->make($dir->path . '/' .$file->name . '.zip')->add($file->path);
+        $zipper->make($path)->add($file->path);
+        $location = asset($arch_root . '/' . $file->name . '.zip');
+        $this->insertDbArchive($file->toArray(), $path,$location);
+        return success(['arch_path' => $location],'Arhivarea a avut loc cu success');
+    }
 
-        return success(['arch_path' => $dir->location . '/' . $file->name . '.zip'],'Arhivarea a avut loc cu success');
+    public function insertDbArchive($data, $final_path,$location)
+    {
+        $data['file_id'] = $data['id'];
+        if(! $archive =  Archive::where('file_id', $data['id'])->first()){
+            unset($data['id']);
+            $data['location'] = $location;
+            $data['path'] = $final_path;
+            $data['extention'] = 'zip';
+            Archive::create($data);
+        }else{
+            $archive->location = $location;
+            $archive->path = $final_path;
+            $archive->save();
+        }
     }
 
 }

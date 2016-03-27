@@ -1,5 +1,9 @@
 <?php namespace App\Repositories\Galonline\Navigation;
 
+use App\Models\Archive;
+use App\Models\Director;
+use App\Models\File;
+
 class Main
 {
 
@@ -47,7 +51,7 @@ class Main
 	        ->icon('icon fa fa-folder')
 	        ->active((\Request::is('file-structure*') || \Request::is('director-files*') )  ? 'active' : '')
 	        ->caption( trans('sidebar.file_struct') )
-            ->count('1')
+            ->count('2')
             /*Structura de documente/foldere*/
 	        ->addOption('structura_individuala',
 	            \App\Repositories\Ui\Navigation\Option::make()
@@ -56,8 +60,30 @@ class Main
 	            ->icon('')
 	            ->caption( trans('sidebar.folder_structure') )
 	            ->show(true)
-	        )
+                ->count(Director::owners()->count() - 1)
+            )
+	        ->addOption('search',
+	            \App\Repositories\Ui\Navigation\Option::make()
+	            ->class( \Request::is('search')  ? 'active' : '')
+	            ->url(\URL::route('search.index') )
+	            ->icon('')
+	            ->caption( trans('sidebar.search') )
+	            ->show(true)
+                ->count(File::count())
+            )
 	    );
+
+
+
+		$this->menu->addOption('archives',
+			\App\Repositories\Ui\Navigation\Option::make()
+				->class(\Request::is('archive*') ? 'active' : '')
+				->url(\URL::route('archives.index'))
+				->icon('icon fa fa-archive')
+				->caption(trans('sidebar.archives'))
+				->show(true)
+				->count(Archive::count())
+		);
 
 
         $this->menu->addDropdown('nomenclatoare-dropdown',
@@ -66,7 +92,7 @@ class Main
                 ->icon('icon fa fa-book')
                 ->active(\Request::is('superadmin/nomenclatoare/*') ? 'active' : '')
                 ->caption( trans('sidebar.nomenclator') )
-                ->count('1')
+                ->count('2')
                 /*Tipuri de documente acceptate*/
                 ->addOption('tipuri-documente-dropdown',
                     \App\Repositories\Ui\Navigation\Option::make()
@@ -74,6 +100,14 @@ class Main
                         ->url(route('superadmin.nomenclatoare.file-types.index') )
                         ->icon('')
                         ->caption( trans('sidebar.doc_type') )
+                        ->show(true)
+                )
+                ->addOption('categorii-dropdown',
+                    \App\Repositories\Ui\Navigation\Option::make()
+						->class(\Request::is('superadmin/nomenclatoare/categories') ? 'active' : '')
+                        ->url(route('superadmin.nomenclatoare.categories.index') )
+                        ->icon('')
+                        ->caption( trans('sidebar.categories') )
                         ->show(true)
                 )
         );
