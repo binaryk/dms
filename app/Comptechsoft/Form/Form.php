@@ -93,6 +93,9 @@ class Form
 
     public function render()
     {
-        return '<form enctype="multipart/form-data" role="form" method="POST" id="'.($this->grid_id ? $this->grid_id : "gridDefault").'">' . view($this->view)->withAction($this->action)->withRecord($this->record)->withData($this->parameters)->render() . '</form>';
+        if($this->grid_id){
+            return '<form enctype="multipart/form-data" role="form" method="POST" id="'.($this->grid_id ? $this->grid_id : "gridDefault").'">' . view($this->view)->withAction($this->action)->withRecord($this->record)->withData($this->parameters)->render() . '</form>';
+        }
+        return view($this->view)->withAction($this->action)->withRecord($this->record)->withData($this->parameters)->render();
     }
 }

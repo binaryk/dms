@@ -32,23 +32,24 @@ class Main
 					->show(true)
 			);
 		}
-
-        $this->menu->addOption('contact',
-            \App\Repositories\Ui\Navigation\Option::make()
-                ->class(\Request::is('daw-contact*') ? 'active' : '')
-                ->url(\URL::route('daw.contact.index'))
-                ->icon('icon icon-envelope')
-                ->caption(trans('messages.welcome.contact'))
-                ->show(true)
-        );
+		if(env('APP_ENV') === 'daw') {
+			$this->menu->addOption('contact',
+				\App\Repositories\Ui\Navigation\Option::make()
+					->class(\Request::is('daw-contact*') ? 'active' : '')
+					->url(\URL::route('daw.contact.index'))
+					->icon('icon icon-envelope')
+					->caption(trans('messages.welcome.contact'))
+					->show(true)
+			);
+		}
 		if(env('APP_ENV') === 'ps') {
 
-			$this->menu->addOption('user_accounts',
+			$this->menu->addOption('vehicles.index',
 				\App\Repositories\Ui\Navigation\Option::make()
-					->class(\Request::is('ps/user-accounts*') ? 'active' : '')
-					->url(\URL::route('ps.accounts.index'))
-					->icon('icon fa fa-users')
-					->caption('User accounts')
+					->class(\Request::is('vehicles*') ? 'active' : '')
+					->url(\URL::route('ps.vehicles.index'))
+					->icon('fa fa-automobile')
+					->caption('Vehicles')
 					->show(true)
 			);
 		}

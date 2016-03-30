@@ -45,6 +45,7 @@
 
     this.getcomboboxValue = function(formField)
     {
+        console.log(formField.val());
         return formField.val();
     }
 

@@ -1,0 +1,1 @@
+{{ App\Comptechsoft\Ui\Html\StringHelper::Checked( $available ) }}

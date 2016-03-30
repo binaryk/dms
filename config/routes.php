@@ -18,6 +18,5 @@ return [
 		'daw/contact.php',
 
 		'ps/ass1.php'
-
 	]
 ];

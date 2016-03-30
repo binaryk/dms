@@ -8,13 +8,6 @@ const PostsCtrl = function($scope, PostsService, $compile, $location){
 
     this.query = $location.search();
 
-    $scope.$watch('$location.search()', function(newV, old){
-        console.log(newV);
-    });
-
-
-
-
     this.init = () => {
         $scope.$watch(function(){ return $location.search() }, function(){
             console.log('change',_that.data);
