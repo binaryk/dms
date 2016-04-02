@@ -1,16 +1,18 @@
 <div class="{{ $class }}">
 	@if( ! empty($caption) )
-		<label class="control-label" for="{{$name}}">
-			@if($icon)
+		<label class="control-label {!! @$lclass !!}" for="{{$name}}">
+			@if(isset($icon))
 				{!! $icon !!}
 			@endif
 			{!! $caption !!}
 		</label>
-    @endif
-    {!! 
-    	Form::text($name, $value, $attributes)
+	@endif
+	<div class="{!! @$wrapper !!}">
+	{!!
+        Form::text($name, $value, $attributes)
     !!}
-    @if($help)
+	</div>
+	@if($help)
 		<p class="help-block">{{$help}}</p>
 	@endif
 </div>

@@ -52,6 +52,24 @@ class Main
 					->caption('Vehicles')
 					->show(true)
 			);
+
+			$this->menu->addOption('parsator.index',
+				\App\Repositories\Ui\Navigation\Option::make()
+					->class(\Request::is('parsator') ? 'active' : '')
+					->url(\URL::route('ps.parsator.index'))
+					->icon('fa fa-file')
+					->caption('Parsator')
+					->show(true)
+			);
+
+			$this->menu->addOption('parsator.report',
+				\App\Repositories\Ui\Navigation\Option::make()
+					->class(\Request::is('parsator-report*') ? 'active' : '')
+					->url(\URL::route('ps.parsator.report'))
+					->icon('fa fa-archive')
+					->caption('Report')
+					->show(true)
+			);
 		}
 
         if(env('APP_ENV') === 'local' || env('APP_ENV') === 'production'){
@@ -70,7 +88,7 @@ class Main
                     ->icon('')
                     ->caption( trans('sidebar.folder_structure') )
                     ->show(true)
-                    ->count(Director::owners()->count() - 1)
+                    ->count(Director::owners() != [] ? Director::owners()->count() - 1 : 0)
                 )
                 ->addOption('search',
                     \App\Repositories\Ui\Navigation\Option::make()

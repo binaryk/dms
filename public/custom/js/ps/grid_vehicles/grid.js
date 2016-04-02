@@ -18,7 +18,7 @@
 			url  : 'http://localhost/dms/be/public/vehicles-source',
 			type : 'post',
 			data : {
-				_token : 'R1x38dxicfhIg0C7PYZZtOgR0zSfeSa3s1X0vY5s'
+				_token : 'Qov9qsIx9xbgZVUjo9XpusVpBKiSeU3kpcMannmm'
 			}
 		},
 		order        : [1, 'asc'],

@@ -32,7 +32,7 @@
 		grid       : grid,
 		toolbar    : '{!! $toolbar !!}',
 		_token     : '{{ csrf_token() }}',
-		form_width : 4
+		form_width : 12
 	}).init();
 	console.log(index);
 	index.afterShowform = function(impact){

@@ -1,0 +1,10 @@
+<api>
+	<car>
+		<make>Tesla 21212</make>
+		<model>Model XXXX</model>
+		<price>100</price>
+		<year>2016</year>
+		<milage>1000</milage>
+		<fuel_type>electric</fuel_type>
+	</car>
+</api>

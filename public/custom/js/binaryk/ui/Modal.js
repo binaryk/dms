@@ -29,9 +29,23 @@ var App;
                     $(_this.parameters.id).modal('show');
                 };
                 this.hide = function () {
+                    $(_this.parameters.id).find('input').val('');
                     $(_this.parameters.id).modal('hide');
                 };
+                this.listen();
             }
+            Modal.prototype.listen = function () {
+                var _that = this;
+                var functions = [];
+                $('button[data-modal-action]').map(function () {
+                    functions.push($(this).data('modal-action'));
+                    $(this).on('click', function (e) {
+                        e.preventDefault();
+                        var func = $(this).data('modal-action');
+                        _that[func]();
+                    });
+                });
+            };
             return Modal;
         })();
         Ui.Modal = Modal;

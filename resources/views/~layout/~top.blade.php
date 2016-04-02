@@ -3,8 +3,8 @@
         <div class="navbar-header">
             <a href="{!! url('/') !!}" class="navbar-brand">
                 <div class="brand-logo">
-                    @if(env('APP_ENV') === 'local' || env('APP_ENV') === 'production')))
-                    <img src="{!! asset('angel/img/logo_kes.png')!!}" alt="App Logo" class="img-responsive" style="height: 70px; width: 160px; margin-top:-20px; margin-left: -74px;">
+                    @if(env('APP_ENV') === 'local' || env('APP_ENV') === 'production')
+                    <img src="{!! asset('angel/img/logo_kes.png')!!}" alt="App Logo" class="img-responsive" style="height: 70px; width: 200px; margin-top:-20px; margin-left: -15px;">
                     @else
                     <img src="{!! asset('angel/img/logo.png')!!}" alt="App Logo" class="img-responsive">
                     @endif

@@ -17,6 +17,7 @@ return [
 		'posts/posts.php',
 		'daw/contact.php',
 
-		'ps/ass1.php'
+		'ps/ass1.php',
+		'ps/ass2.php'
 	]
 ];

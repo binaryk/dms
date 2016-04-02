@@ -4,6 +4,8 @@
 		@parent
 		<link rel="stylesheet" href="{!! asset('vendor\file-input\css\fileinput.min.css') !!}">
 		<link rel="stylesheet" href="{!! asset('custom/css/file-icons.css') !!}">
+		<style>
+		</style>
 @stop
 @section('heading')
         @parent
@@ -21,7 +23,7 @@
 		'custom/js/director-files/index',
 		'custom/js/director-files/file',
 		'angel/vendor/bootstrap-wysiwyg/bootstrap-wysiwyg',
-		'angel/vendor/bootstrap-wysiwyg/external/jquery.hotkeys'
+		'angel/vendor/bootstrap-wysiwyg/external/jquery.hotkeys',
 	])->render()
 	!!}
 @stop

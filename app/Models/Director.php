@@ -14,6 +14,9 @@ class Director extends Node {
   protected $guarded = array('id', 'parent_id', 'lft', 'rgt', 'depth');
 
   public static function owners(){
+    if(! auth()->user()){
+      return [];
+    }
     return self::where('user_id', access()->user()->id)->get();
   }
 

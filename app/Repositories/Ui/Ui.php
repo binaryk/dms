@@ -13,6 +13,8 @@ class Ui
 
     public function __call( $method, $args )
     {
+        if(! isset($args[0]))
+            return $this;
        $this->data[$method] = $args[0];
        return $this;
     }

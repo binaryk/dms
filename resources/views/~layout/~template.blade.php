@@ -12,7 +12,7 @@
         <div></div>
     </div>
 </div>
-<div class="wrapper" ng-cloak @yield('ctrl')>
+<div class="wrapper ng-cloak" ng-cloak @yield('ctrl')>
 
     @include('~layout.~top')
     @if(!Auth::guest())
@@ -22,5 +22,7 @@
     @include('~layout.~footer')
 </div>
 @include('~layout.~js')
+
+@yield('modal')
 </body>
 </html>

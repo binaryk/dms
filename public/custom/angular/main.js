@@ -67,7 +67,7 @@
 	
 	var _angularUiTree2 = _interopRequireDefault(_angularUiTree);
 	
-	var _lodash = __webpack_require__(9);
+	var _lodash = __webpack_require__(8);
 	
 	var ld = _interopRequireWildcard(_lodash);
 	
@@ -39946,8 +39946,7 @@
 
 
 /***/ },
-/* 8 */,
-/* 9 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/**
@@ -55024,10 +55023,10 @@
 	  }
 	}.call(this));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)(module), (function() { return this; }())))
 
 /***/ },
-/* 10 */
+/* 9 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {

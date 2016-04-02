@@ -8,6 +8,7 @@ use App\Repositories\Search\Grid;
 use App\Repositories\Search\Rows;
 use App\Repositories\Search\Form;
 use App\Repositories\Search\Action;
+use Illuminate\Support\Facades\Mail;
 
 class SearchController extends BaseController
 {
@@ -65,7 +66,14 @@ class SearchController extends BaseController
 
     public function sendEmail($id)
     {
-        dd($id);
+        $data = Input::all();
+        $data['file'] = File::find($id);
+        Mail::send('search.email', ['user' => access()->user()],function ($message) use ($data) {
+            $message->subject('File receive');
+            $message->to($data['email']);
+            $message->attach($data['file']->path);
+        });
+        return success([]);
     }
 
 }

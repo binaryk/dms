@@ -70,7 +70,13 @@ class VehiclesController extends BaseController
      */
     public function doAction( $action, $id = NULL )
     {
-        $action = (new Action($action, $id))->data(Input::get('data'));
+
+        $this->admin =  access()->user()->hasRole('Administrator');
+        $data = Input::get('data');
+        if($action === 'update' && !$this->admin){
+            $data['user_id'] = access()->user()->id;
+        }
+        $action = (new Action($action, $id))->data($data);
         return \Response::json($action->commit());
     }
 

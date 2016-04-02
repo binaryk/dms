@@ -23,7 +23,8 @@
         "symfony/dom-crawler": "2.8.*|3.0.*",
         "barryvdh/laravel-debugbar": "^2.1",
         "baum/baum": "~1.1",
-        "chumper/zipper": "0.6.x"
+        "chumper/zipper": "0.6.x",
+        "orchestra/parser": "~3.0"
     },
     "autoload": {
         "classmap": [

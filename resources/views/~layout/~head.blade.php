@@ -25,8 +25,9 @@
 
     {!! Html::style('angel/css/app.css')!!}
     @yield('my-styles')
-
+    @if(0)
     {!! Html::style( 'site/css/style.css' ) !!}
+    @endif
     {!! Html::style( 'site/css/modal.comptech.css' ) !!}
     {!! Html::style( 'site/themes/css/flat-blue.css' ) !!}
     {!! Html::style( 'custom/css/ui.css' ) !!}
@@ -48,6 +49,8 @@
             bottom: 0;
             right: 0;
         }
+
+        .top-buffer { margin-top:20px; }
     </style>
     @yield('css')
 </head>

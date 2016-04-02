@@ -18,7 +18,7 @@
 			url  : 'http://localhost/dms/be/public/search-source',
 			type : 'post',
 			data : {
-				_token : 'XVXXRghWMDRCE11uVzGGrZdLpjBWE0BfAwZ7DkmS'
+				_token : 'iBhjAGNTH6e6nJJd31SXbbPVP62kMd0s4fsQJtS4'
 			}
 		},
 		order        : [1, 'asc'],

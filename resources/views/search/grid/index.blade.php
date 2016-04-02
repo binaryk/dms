@@ -15,6 +15,19 @@
 
 @section('content')
     @parent
+	@section('modal')
+{!!
+	App\Repositories\Ui\Modal\Modal::make(null,null)
+	->id('frm-termeni-conditii')
+	->caption('Trimite fișier prin email')
+	->closable(true)
+	->body(view('search.modal')->render())
+	->footer('
+	<button type="button" data-modal-action="sendLink" class="btn btn-default">Trimite</button>
+	<button type="button" class="btn btn-default" data-dismiss="modal" onClose="ceva()">Renunţă</button>')
+	->render()
+!!}
+		@stop
 @stop
 
 @section('jquery-document-ready')
@@ -26,5 +39,16 @@
 		_token     : '{{ csrf_token() }}',
 		form_width : 4
 	}).init();
-	new App.Handler();
+
+
+	termeni_conditii_form = new App.Ui.Modal({'id' : '#frm-termeni-conditii'});
+		$('#open-form-termeni-conditii').click(function(e){
+		e.preventDefault();
+		termeni_conditii_form.show();
+
+	});
+
+    new App.Handler(termeni_conditii_form);
+
+
 @stop

@@ -2,7 +2,22 @@ module App.Ui{
     declare var $;
 
     export class Modal{
-        constructor(public parameters){}
+        constructor(public parameters){
+            this.listen();
+        }
+
+        listen(){
+            const _that = this;
+            var functions = [];
+            $('button[data-modal-action]').map(function(){
+                functions.push($(this).data('modal-action'));
+                $(this).on('click', function(e){
+                    e.preventDefault();
+                    let func = $(this).data('modal-action');
+                    _that[func]();
+                })
+            });
+        }
 
         showMessages = ( messages?, type?):void =>
         {
@@ -37,6 +52,7 @@ module App.Ui{
 
         hide = ():void =>
         {
+            $(this.parameters.id).find('input').val('');
             $(this.parameters.id).modal('hide');
         }
 

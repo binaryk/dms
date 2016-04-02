@@ -1,6 +1,6 @@
     <div class="form-group">
         <label class="col-sm-2 control-label">Descriere</label>
-        <div class="col-sm-12">
+        <div class="col-sm-10">
             <div data-role="editor-toolbar" data-target="#editor" class="btn-toolbar btn-editor">
                 <div class="btn-group dropdown">
                     <a data-toggle="dropdown" title="Font" class="btn btn-default">
