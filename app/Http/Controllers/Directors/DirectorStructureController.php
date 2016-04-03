@@ -30,6 +30,7 @@ class DirectorStructureController extends BaseController
 
     public function storeDir()
     {
+
         $data = Input::get('data');
         if(array_key_exists("parent", $data)){
            return $this->dir($data);
@@ -63,6 +64,7 @@ class DirectorStructureController extends BaseController
                     'location' => asset(config('general.upload') . access()->user()->id),
                 ]);
                 File::makeDirectory($user_root->path, 0775, true);
+                $this->log('Utilizatorul:'.$this->current_user->name.' a creat directorul root.', 'info');
             }
             if(! file_exists(public_path(config('general.upload') . access()->user()->id . DIRECTORY_SEPARATOR . $data['name']))){
                 $root = Director::create([
@@ -73,6 +75,7 @@ class DirectorStructureController extends BaseController
                     'location' => asset(config('general.upload') . access()->user()->id . DIRECTORY_SEPARATOR . $data['name']),
                 ]);
                 $root->makeChildOf($user_root);
+                $this->log('Utilizatorul:'.$this->current_user->name.' a creat directorul '.$root->path.'.', 'info');
                 File::makeDirectory($root->path, 0775, true);
             }else{
                 throw  new \Exception('Exista deja director cu acest nume', 500);
@@ -96,6 +99,7 @@ class DirectorStructureController extends BaseController
             $dir_deleted = File::deleteDirectory($child->path);
             $this->deleteAllFiles($data);
             $child->delete();
+            $this->log('Utilizatorul:'.$this->current_user->name.' a sters directorul (si toate fisierele din el) '.$child->path.'.', 'warning');
         }catch(\Exception $e){
             return error($e->getMessage());
         }
@@ -123,6 +127,7 @@ class DirectorStructureController extends BaseController
                     'user_id' => access()->user()->id,
                     'location' => $root->location . DIRECTORY_SEPARATOR . $data['current']['name'],
                 ]);
+                $this->log('Utilizatorul:'.$this->current_user->name.' a creat directorul :'.$inserted->path.'.', 'info');
                 $inserted->makeChildOf($root);
                 File::makeDirectory($inserted->path, 0775, true);
             }else{

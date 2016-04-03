@@ -1,8 +1,7 @@
 'use strict'
-var FileStructureCtrl = function($scope, FileStructureService,$uibModal, $compile, $location, $rootScope){
+var FileStructureCtrl = function($scope, FileStructureService,$uibModal, $compile){
     const that = this;
     that.selectedDirScope = null;
-
     that.addDirectory = () =>{
         that.addDir = ! that.addDir;
     }
@@ -44,19 +43,19 @@ var FileStructureCtrl = function($scope, FileStructureService,$uibModal, $compil
     }
 
     that.storeDirectory = () => {
-    that.form.type = 'director';
-    FileStructureService.store(that.form)
-        .then(data => {
-            if(data.code === 200){
-                console.log(data);
-                that.addDir = false;
-                that.files.push(data.inserted);
-                that.form = {};
-                console.log(that.files);
-            }else{
-                alert('Erorr: '+data.msg);
-            }
-        });
+        that.form.type = 'director';
+        FileStructureService.store(that.form)
+            .then(data => {
+                if(data.code === 200){
+                    console.log(data);
+                    that.addDir = false;
+                    that.files.push(data.inserted);
+                    that.form = {};
+                    console.log(that.files);
+                }else{
+                    alert('Erorr: '+data.msg);
+                }
+            });
     }
 
     that.storeChildDirectory = (parent, dirName) => {
@@ -150,7 +149,7 @@ var FileStructureCtrl = function($scope, FileStructureService,$uibModal, $compil
     this.get();
 }
 
-FileStructureCtrl.$inject = ['$scope','FileStructureService','$uibModal', '$compile', '$location', '$rootScope'];
+FileStructureCtrl.$inject = ['$scope','FileStructureService','$uibModal', '$compile'];
 controllers.controller('FileStructureCtrl', FileStructureCtrl);
 
 controllers.controller('ModalDirectorCtrl', function ($scope, $uibModalInstance, fss, current_dir) {

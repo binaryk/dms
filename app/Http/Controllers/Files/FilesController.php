@@ -86,13 +86,16 @@ class FilesController extends BaseController
             $data['extention'] = $res->getExtension();
             $data['storage'] = formatSizeUnits($res->getSize());
             $data['location'] = $dir->location . '/' . $file->getClientOriginalName();
-        }
+            $this->log('Utilizatorul:'.$this->current_user->name.' a incarcat fisierul:'.$data['path'].'.', 'info');
 
+        }
         $actionObject = (new Action($action, $id))->data($data);
         if( $action == 'insert' ){
             $actionObject->addData('director', $dir_id);
             $res = $actionObject->commit();
             $this->insertIntoHistory($res);
+        }else{
+            $res = $actionObject->commit();
         }
 
         return \Response::json($res);
@@ -118,6 +121,7 @@ class FilesController extends BaseController
         $zipper->make($path)->add($file->path);
         $location = asset($arch_root . '/' . $file->name . '.zip');
         $this->insertDbArchive($file->toArray(), $path,$location);
+        $this->log('Utilizatorul:'.$this->current_user->name.' a creat arhiva :'.$path.'.', 'info');
         return success(['arch_path' => $location],'Arhivarea a avut loc cu success');
     }
 

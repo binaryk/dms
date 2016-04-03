@@ -2,7 +2,7 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="{!! url('/') !!}" class="logo"><b>PS</b></a>
+    <a href="{!! url('/') !!}" class="logo"><b>@if(env('APP_ENV') == 'ps') PS @else DMS @endif</b></a>
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">

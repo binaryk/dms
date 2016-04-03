@@ -44,10 +44,10 @@ var dms = _angular2.default.module('dms', ['dms.controllers', 'dms.directives', 
 }).config(function ($interpolateProvider, $locationProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
-    $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
-    });
+    /* $locationProvider.html5Mode({
+         enabled: true,
+         requireBase: false
+     });*/
 }).run(function ($rootScope) {
     $rootScope.config = _config;
 });
@@ -59,10 +59,9 @@ function MainCtrl($scope) {}
 MainCtrl.$inject = ['$scope'];
 controllers.controller('MainCtrl', MainCtrl);
 'use strict';
-var FileStructureCtrl = function FileStructureCtrl($scope, FileStructureService, $uibModal, $compile, $location, $rootScope) {
+var FileStructureCtrl = function FileStructureCtrl($scope, FileStructureService, $uibModal, $compile) {
     var that = this;
     that.selectedDirScope = null;
-
     that.addDirectory = function () {
         that.addDir = !that.addDir;
     };
@@ -203,7 +202,7 @@ var FileStructureCtrl = function FileStructureCtrl($scope, FileStructureService,
     this.get();
 };
 
-FileStructureCtrl.$inject = ['$scope', 'FileStructureService', '$uibModal', '$compile', '$location', '$rootScope'];
+FileStructureCtrl.$inject = ['$scope', 'FileStructureService', '$uibModal', '$compile'];
 controllers.controller('FileStructureCtrl', FileStructureCtrl);
 
 controllers.controller('ModalDirectorCtrl', function ($scope, $uibModalInstance, fss, current_dir) {
@@ -242,10 +241,6 @@ var PostsCtrl = function PostsCtrl($scope, PostsService, $compile, $location) {
     this.query = {};
 
     this.query = $location.search();
-
-    $scope.$watch('$location.search()', function (newV, old) {
-        console.log(newV);
-    });
 
     this.init = function () {
         $scope.$watch(function () {

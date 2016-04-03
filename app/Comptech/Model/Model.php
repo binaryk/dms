@@ -1,8 +1,10 @@
 <?php namespace App\Comptech\Model;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Model extends \Illuminate\Database\Eloquent\Model
 {
-
+    use SoftDeletes;
     public static function getTotal( $where )
     {
         if( ! $where )

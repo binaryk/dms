@@ -1,9 +1,6 @@
 <?php namespace App\Models;
 use Baum\Node;
 
-/**
-* FileStructure
-*/
 class Director extends Node {
 
   protected $table = 'directors';

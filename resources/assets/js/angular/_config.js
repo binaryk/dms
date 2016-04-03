@@ -22,10 +22,10 @@ var dms = angular.module('dms', ['dms.controllers','dms.directives','dms.service
     .config(function($interpolateProvider, $locationProvider) {
         $interpolateProvider.startSymbol('[[');
         $interpolateProvider.endSymbol(']]');
-        $locationProvider.html5Mode({
+       /* $locationProvider.html5Mode({
             enabled: true,
             requireBase: false
-        });
+        });*/
     })
     .run(function($rootScope){
         $rootScope.config = _config;

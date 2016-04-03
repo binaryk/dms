@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers\Basic;
 
+use Illuminate\Support\Facades\Log;
+
 class BaseController extends \App\Http\Controllers\Controller
 {
 
@@ -47,6 +49,21 @@ class BaseController extends \App\Http\Controllers\Controller
                 'small' => $small,
             ],
     	];
+    }
+
+    protected function log($message, $type){
+        switch($type){
+            case 'info':
+                Log::info($message);
+            break;
+            case 'warning':
+                Log::warning($message);
+            break;
+            case 'error':
+                Log::error($message);
+            break;
+        }
+//        call_user_func(['Illuminate\Support\Facades\Log', $type]);
     }
 
  

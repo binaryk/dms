@@ -8,7 +8,7 @@
     <div class="form-group hidden" id="image-upload-box">
         <label class="col-sm-2 control-label">Încarcă fișierul</label>
         <div class="col-sm-10">
-            <div class="col-xs-12 bootstrap-filestyle input-group " >
+            <div class="col-xs-12 bootstrap-filestyle input-group " style="cursor: pointer;">
                 <input type="file" name="file" class="form-control filestyle" id="file">
             </div>
         </div>
@@ -42,7 +42,6 @@
 
         <fieldset>
             <div class="form-group">
-                <button type="button" title="" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." class="btn btn-default" data-original-title="Popover title" aria-describedby="popover791319">Popover on right</button>
                 <label class="col-sm-2 control-label">Fișier privat ?</label>
                 <div class="col-sm-10">
                     <label class="switch switch-lg">
@@ -71,7 +70,7 @@
                 'data-field'  => $field,
                 'data-type'   => 'textbox'
             ])
-            ->setFlag( 'readonly', $action == 'delete' )
+            ->setFlag( 'readonly',true )
             ->help('')
             ->render()
         !!}

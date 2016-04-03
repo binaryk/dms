@@ -1,5 +1,7 @@
 <?php namespace App\Comptechsoft\Form;
 
+use Illuminate\Support\Facades\Log;
+
 class Action
 {
     protected $id       = NULL;
@@ -95,6 +97,7 @@ class Action
         }
         try
         {
+            $this->log($this->record, $this->action);
             $this->{'do' . $this->action}();
             return [
                 'success'     => true,
@@ -113,6 +116,27 @@ class Action
                 'errors'      => [ $e->getMessage() ],
                 'messages'    => [],
             ];
+        }
+    }
+
+    public function log($record, $action)
+    {
+        $table = $record->getTable();
+        $user = access()->user();
+        $message = 'Utilizatorul: '.$user->name . ' a facut actiunea de: '. $action . ', pe tabelul: '.$table;
+        if($action == 'update' || $action == 'delete'){
+            $message .= ', la id-ul:'.$record->id;
+        }
+        switch($action){
+            case 'insert':
+                Log::info($message);
+                break;
+            case 'update':
+                Log::warning($message);
+                break;
+            case 'delete':
+                Log::warning($message);
+                break;
         }
     }
 
