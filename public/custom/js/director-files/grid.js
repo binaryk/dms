@@ -15,7 +15,7 @@
 		pageLength   : 10,
 		dom          : '<"row"<"col-xs-12"lp<"comptech-soft-toolbar pull-right">>><"row"<"col-sm-12 galonline-datatable-container"t>>',
 		ajax         : {
-			url  : 'http://localhost/dms/be/public/director-files-source/46/gridDirectorFiles',
+			url  : 'http://localhost/dms/be/public/director-files-source/15/gridDirectorFiles',
 			type : 'post',
 			data : {
 				_token : 'Qndy84aRX6LCYlV20xEYCLBisNgLIAK6sniqnHiz'

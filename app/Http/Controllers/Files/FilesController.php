@@ -82,7 +82,12 @@ class FilesController extends BaseController
             $dir = Director::find($dir_id);
             $file = Input::file('file');
             $res = $file->move($dir->path, $file->getClientOriginalName());
-            self::toDbSync($data, $res, $dir, $file, $this);
+            $data['author'] = access()->user()->id;
+            $data['path']   = $res->getPathName();
+            $data['extention'] = $res->getExtension();
+            $data['storage'] = formatSizeUnits($res->getSize());
+            $data['location'] = $dir->location . '/' . $file->getClientOriginalName();
+            $this->log('Utilizatorul:'.$this->current_user->name.' a incarcat fisierul:'.$data['path'].'.', 'info');
 
         }
         $actionObject = (new Action($action, $id))->data($data);
