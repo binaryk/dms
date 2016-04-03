@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Directors;
 use App\Http\Controllers\Basic\BaseController;
+use App\Http\Controllers\Files\FilesController;
 use App\Models\Director;
 
 use Illuminate\Support\Facades\File;
@@ -138,6 +139,32 @@ class DirectorStructureController extends BaseController
             return error($e->getMessage());
         }
         return success(['inserted' => $inserted]);
+    }
+
+    public function sync()
+    {
+        $path = Input::get('data');
+        if(!File::exists($path)) {
+           return error("Calea spre director nu este valida.");
+        }
+        if (!File::isDirectory($path))
+        {
+            return error("Calea introdusa nu duce catre un director.");
+        }
+        // facem copie a directorului
+        $inserted = $this->rootDir(['name' => basename($path), 'type' => 'director']);
+        $actual_path = $inserted->getData(true)['inserted']['path'];
+
+        FilesController::syncFiles($path, $actual_path);
+        // recursiv trebuie sa introducem toate fisierele si directors
+        $files = File::allFiles($path);
+        dd($files);
+        foreach ($files as $file)
+        {
+            echo (string)$file, "\n";
+        }
+//        return success(['name' => basename($path)]);
+
     }
 
 

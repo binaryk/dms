@@ -62,6 +62,7 @@ controllers.controller('MainCtrl', MainCtrl);
 var FileStructureCtrl = function FileStructureCtrl($scope, FileStructureService, $uibModal, $compile) {
     var that = this;
     that.selectedDirScope = null;
+    that.sync_modal = null;
     that.addDirectory = function () {
         that.addDir = !that.addDir;
     };
@@ -196,6 +197,30 @@ var FileStructureCtrl = function FileStructureCtrl($scope, FileStructureService,
             //$itemScope.remove();
             //that.removeDir($itemScope);
         }]];
+
+        that.sync_modal = new App.Ui.Modal({ 'id': '#sync_modal' });
+        that.sync_modal.sync = that.sync_requst;
+    };
+
+    that.sync_requst = function () {
+        var path = $('#path').val();
+        that.sync_modal.hide();
+        Spinner.show();
+        FileStructureService.sync(path).then(function (data) {
+            console.log(data);
+            Spinner.hide(2000, function () {
+                var afirm = new App.Afirm();
+                if (data.code == 200) {
+                    afirm.success("Sincronizarea a avut loc cu succes");
+                } else {
+                    afirm.error("Atentie, a intervenit o eroare cu mesajul: " + data.msg);
+                }
+            });
+        });
+    };
+
+    that.sync = function () {
+        that.sync_modal.show();
     };
 
     this.init();
@@ -306,6 +331,13 @@ services.factory('FileStructureService', ['$rootScope', '$http', function ($root
 
     mixin.remove = function (data) {
         var promise = $http.post($rootScope.config.file_structure_remove, { data: data }).then(function (response) {
+            return response.data;
+        });
+        return promise;
+    };
+
+    mixin.sync = function (data) {
+        var promise = $http.post($rootScope.config.file_structure_sync, { data: data }).then(function (response) {
             return response.data;
         });
         return promise;

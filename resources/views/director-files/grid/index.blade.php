@@ -21,7 +21,7 @@
 	App\Comptechsoft\Ui\Html\Scripts::make([
 		'custom/js/director-files/grid',
 		'custom/js/director-files/index',
-		'custom/js/director-files/file',
+		'custom/js/director-files/File',
 		'angel/vendor/bootstrap-wysiwyg/bootstrap-wysiwyg',
 		'angel/vendor/bootstrap-wysiwyg/external/jquery.hotkeys',
 	])->render()

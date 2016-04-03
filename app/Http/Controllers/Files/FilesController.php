@@ -141,4 +141,16 @@ class FilesController extends BaseController
         }
     }
 
+    public static function syncFiles($path, $actual_path)
+    {
+        $files = SFile::allFiles($path);
+        foreach ($files as $file)
+        {
+            $tfile = new SFile($file->getPathname());
+            $tfile->move($actual_path, $file->getClientOriginalName());
+        }
+
+        return true;
+    }
+
 }

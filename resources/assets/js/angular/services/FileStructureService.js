@@ -12,6 +12,11 @@ services.factory('FileStructureService', ['$rootScope','$http', function($rootSc
         return promise;
     }
 
+    mixin.sync = function(data){
+        var promise = $http.post($rootScope.config.file_structure_sync, {data: data}).then( response => response.data  );
+        return promise;
+    }
+
     mixin.get = function(){
         const promise = $http.get($rootScope.config.file_structure_get).then( response => response.data );
         return promise;

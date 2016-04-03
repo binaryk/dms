@@ -2,6 +2,7 @@
 var FileStructureCtrl = function($scope, FileStructureService,$uibModal, $compile){
     const that = this;
     that.selectedDirScope = null;
+    that.sync_modal = null;
     that.addDirectory = () =>{
         that.addDir = ! that.addDir;
     }
@@ -143,6 +144,31 @@ var FileStructureCtrl = function($scope, FileStructureService,$uibModal, $compil
 
             }]
         ];
+
+        that.sync_modal = new App.Ui.Modal({'id' : '#sync_modal'});
+        that.sync_modal.sync = that.sync_requst;
+    }
+
+    that.sync_requst = () =>  {
+        const path = $('#path').val();
+        that.sync_modal.hide();
+        Spinner.show();
+        FileStructureService.sync(path).then(data => {
+            console.log(data);
+            Spinner.hide(2000, () => {
+                var afirm = new App.Afirm();
+                if(data.code == 200){
+                    afirm.success("Sincronizarea a avut loc cu succes");
+                }else{
+                    afirm.error("Atentie, a intervenit o eroare cu mesajul: "+data.msg);
+                }
+            });
+        });
+    }
+
+
+    that.sync = () => {
+        that.sync_modal.show();
     }
 
     this.init();

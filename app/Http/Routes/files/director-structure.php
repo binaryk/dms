@@ -12,6 +12,10 @@ Route::group(['middleware' => 'auth'], function() {
         'Directors\DirectorStructureController@remove')
         ->name('file_structure_remove');
 
+    Route::post('api/file-structure-sync',
+        'Directors\DirectorStructureController@sync')
+        ->name('file_structure_sync');
+
     Route::get('api/file-structure-get',
         'Directors\DirectorStructureController@get')
         ->name('file_structure_get');

@@ -27,7 +27,7 @@
 	<button type="button" class="btn btn-default" data-dismiss="modal" onClose="ceva()">Renunţă</button>')
 	->render()
 !!}
-		@stop
+    @stop
 @stop
 
 @section('jquery-document-ready')
@@ -45,7 +45,6 @@
 		$('#open-form-termeni-conditii').click(function(e){
 		e.preventDefault();
 		termeni_conditii_form.show();
-
 	});
 
     new App.Handler(termeni_conditii_form);
