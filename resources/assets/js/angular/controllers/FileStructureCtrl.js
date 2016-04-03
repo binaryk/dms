@@ -155,7 +155,8 @@ var FileStructureCtrl = function($scope, FileStructureService,$uibModal, $compil
         Spinner.show();
         FileStructureService.sync(path).then(data => {
             console.log(data);
-            Spinner.hide(2000, () => {
+            that.files.push(data.inserted);
+            Spinner.hide(1000, () => {
                 var afirm = new App.Afirm();
                 if(data.code == 200){
                     afirm.success("Sincronizarea a avut loc cu succes");

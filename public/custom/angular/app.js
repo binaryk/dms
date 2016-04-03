@@ -208,7 +208,8 @@ var FileStructureCtrl = function FileStructureCtrl($scope, FileStructureService,
         Spinner.show();
         FileStructureService.sync(path).then(function (data) {
             console.log(data);
-            Spinner.hide(2000, function () {
+            that.files.push(data.inserted);
+            Spinner.hide(1000, function () {
                 var afirm = new App.Afirm();
                 if (data.code == 200) {
                     afirm.success("Sincronizarea a avut loc cu succes");

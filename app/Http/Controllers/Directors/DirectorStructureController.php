@@ -151,20 +151,16 @@ class DirectorStructureController extends BaseController
         {
             return error("Calea introdusa nu duce catre un director.");
         }
+        if( file_exists(public_path(config('general.upload') . access()->user()->id . DIRECTORY_SEPARATOR . basename($path)))){
+            return error("Acest director deja exista");
+        }
+
         // facem copie a directorului
         $inserted = $this->rootDir(['name' => basename($path), 'type' => 'director']);
         $actual_path = $inserted->getData(true)['inserted']['path'];
-
-        FilesController::syncFiles($path, $actual_path);
+        FilesController::syncFiles($path, $actual_path, $inserted->getData(true)['inserted']['id']);
         // recursiv trebuie sa introducem toate fisierele si directors
-        $files = File::allFiles($path);
-        dd($files);
-        foreach ($files as $file)
-        {
-            echo (string)$file, "\n";
-        }
-//        return success(['name' => basename($path)]);
-
+        return success(['inserted' => $inserted->getData(true)['inserted']]);
     }
 
 

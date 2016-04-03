@@ -13,6 +13,7 @@ use App\Repositories\Files\Grid;
 use App\Repositories\Files\Rows;
 use App\Repositories\Files\Form;
 use App\Repositories\Files\Action;
+use Illuminate\Support\Facades\Log;
 
 class FilesController extends BaseController
 {
@@ -81,12 +82,7 @@ class FilesController extends BaseController
             $dir = Director::find($dir_id);
             $file = Input::file('file');
             $res = $file->move($dir->path, $file->getClientOriginalName());
-            $data['author'] = access()->user()->id;
-            $data['path']   = $res->getPathName();
-            $data['extention'] = $res->getExtension();
-            $data['storage'] = formatSizeUnits($res->getSize());
-            $data['location'] = $dir->location . '/' . $file->getClientOriginalName();
-            $this->log('Utilizatorul:'.$this->current_user->name.' a incarcat fisierul:'.$data['path'].'.', 'info');
+            self::toDbSync($data, $res, $dir, $file, $this);
 
         }
         $actionObject = (new Action($action, $id))->data($data);
@@ -141,15 +137,27 @@ class FilesController extends BaseController
         }
     }
 
-    public static function syncFiles($path, $actual_path)
+    public static function syncFiles($path, $actual_path, $dir_id)
     {
         $files = SFile::allFiles($path);
         foreach ($files as $file)
         {
-            $tfile = new SFile($file->getPathname());
-            $tfile->move($actual_path, $file->getClientOriginalName());
+            $data = [];
+            $res = SFile::copy($file->getPathname(), $actual_path . DIRECTORY_SEPARATOR . $file->getFilename());
+            /*TO DB*/
+            $data['author'] = access()->user()->id;
+            $data['name'] = $file->getFilename();
+            $data['director'] = $dir_id;
+            $data['path']   = $actual_path . DIRECTORY_SEPARATOR . $file->getFilename();
+            $data['extention'] = $file->getExtension();
+            $data['storage'] = formatSizeUnits($file->getSize());
+            $data['location'] = asset('uploads/'.access()->user()->id.'/'.$file->getFilename());
+            $inject = File::create($data);
+            $data['file_id'] = $inject->id;
+            $history = FileHistory::create($data);
+            Log::info('Utilizatorul:' . access()->user()->name . ' a incarcat fisierul:' . $data['path'] . '.');
+            /*/TODB*/
         }
-
         return true;
     }
 
