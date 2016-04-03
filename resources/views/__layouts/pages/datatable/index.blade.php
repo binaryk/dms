@@ -67,9 +67,9 @@
 	!!}
 	@stop
 
-	@section('custom-javascript-files')
-			<!-- js-ul pentru datatable -->
-	{!! $grid->scripts() !!}
+@section('custom-javascript-files')
+		<!-- js-ul pentru datatable -->
+{!! $grid->scripts() !!}
 @stop
 
 @section('jquery-document-ready')

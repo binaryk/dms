@@ -16,8 +16,7 @@
 
 @section('custom-javascript-files')
 	@parent
-	<!-- includ js-ul pentru datatable creat dinamic -->
-	{!! 
+	{!!
 	App\Comptechsoft\Ui\Html\Scripts::make([
 		'custom/js/director-files/grid',
 		'custom/js/director-files/index',

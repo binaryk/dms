@@ -7,7 +7,7 @@
 	App\Comptechsoft\Ui\Html\Scripts::make([
 		'custom/js/search/grid',
 		'custom/js/grids/index',
-		'custom/js/search/file',
+		'custom/js/search/File',
 		'custom/js/binaryk/ui/Modal'
 	])->render() 
 	!!}
