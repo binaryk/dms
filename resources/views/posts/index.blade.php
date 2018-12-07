@@ -8,5 +8,5 @@
 
 @section('js')
     @parent
-    <script src="https://cdn.rawgit.com/abdmob/x2js/master/xml2json.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/abdmob/x2js/xml2json.js"></script>
 @stop
